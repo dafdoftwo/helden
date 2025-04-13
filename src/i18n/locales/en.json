@@ -1,0 +1,501 @@
+{
+  "common": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "cart": "Cart",
+    "checkout": "Checkout",
+    "search": "Search",
+    "account": "Account",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "left": "left",
+    "wishlist": "Wishlist",
+    "language": "Language",
+    "emptyCart": "Your cart is empty",
+    "addToCart": "Add to Cart",
+    "removeFromCart": "Remove from Cart",
+    "proceedToCheckout": "Proceed to Checkout",
+    "continueToPayment": "Continue to Payment",
+    "completeOrder": "Complete Order",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "edit": "Edit",
+    "delete": "Delete",
+    "goBack": "Go Back",
+    "continue": "Continue",
+    "continueShoping": "Continue Shopping",
+    "backToHome": "Back to Home",
+    "applyDiscount": "Apply Discount",
+    "discountCode": "Discount Code",
+    "shopNow": "Shop Now",
+    "exploreCategories": "Explore Categories",
+    "closeMenu": "Close Menu",
+    "openMenu": "Open Menu",
+    "reviews": "Reviews",
+    "allProducts": "All Products",
+    "price": "SAR",
+    "shop": "Shop",
+    "categories": "Categories",
+    "sar": "SAR",
+    "brandName": "HELDEN",
+    "storeName": "HELDEN Store"
+  },
+  "home": {
+    "hero": {
+      "exclusive": "Exclusive Collection",
+      "title": "Elegant Fashion for the Modern Saudi Woman",
+      "subtitle": "Discover our premium selection of clothing that combines tradition with contemporary style"
+    },
+    "welcome": {
+      "title": "Welcome to {{brandName}}",
+      "text": "{{brandName}} is Saudi Arabia's premier destination for women's fashion. We curate collections that honor cultural heritage while embracing modern elegance, helping you express your unique style with confidence."
+    },
+    "collections": "Our Collections",
+    "collectionsSubtitle": "Explore our carefully curated collections designed for every occasion",
+    "featuredProducts": {
+      "title": "Featured Products",
+      "viewAll": "View All Products"
+    },
+    "newArrivals": {
+      "title": "New Season Arrivals",
+      "subtitle": "Be the first to discover our latest designs and collections",
+      "cta": "Explore New Arrivals"
+    }
+  },
+  "promotions": {
+    "limitedOffer": "Limited Time Offer",
+    "discount": "Use code for 15% off your first order:"
+  },
+  "categories": {
+    "abayas": "Abayas",
+    "casual": "Casual Wear",
+    "formal": "Formal Clothes",
+    "sports": "Sportswear",
+    "bodyShaper": "Body Shapers",
+    "accessories": "Accessories",
+    "about": {
+      "abayas": {
+        "title": "Abayas Collection",
+        "description": "Discover our elegant abayas combining tradition with modern style"
+      },
+      "casual": {
+        "title": "Casual Wear Collection",
+        "description": "Comfortable and stylish casual wear for everyday elegance"
+      },
+      "formal": {
+        "title": "Formal Clothes Collection",
+        "description": "Sophisticated formal attire for special occasions"
+      },
+      "sports": {
+        "title": "Sportswear Collection",
+        "description": "Performance sportswear designed for active women"
+      },
+      "bodyShaper": {
+        "title": "Body Shapers Collection",
+        "description": "Premium body shapers for perfect silhouettes"
+      },
+      "accessories": {
+        "title": "Accessories Collection",
+        "description": "Stylish accessories to complement your wardrobe"
+      }
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Discover our story, mission, and vision at HELDEN, Saudi Arabia's premier women's fashion destination.",
+    "heroTitle": "Our Story",
+    "heroContent": "HELDEN began in 2021 with a simple yet powerful vision: to offer women in Saudi Arabia an exceptional fashion experience that celebrates both traditional values and modern aesthetics. What started as a small boutique in Riyadh has grown into Saudi Arabia's leading destination for women's fashion, bringing together carefully curated collections that honor our rich heritage while embracing global trends.",
+    "missionTitle": "Our Mission",
+    "missionContent": "At HELDEN, we are dedicated to empowering women through fashion that respects cultural values while encouraging individual expression. We believe that clothing is more than fabric—it's a statement of identity, confidence, and purpose.",
+    "visionTitle": "Our Vision",
+    "visionContent": "To be recognized as the foremost women's fashion retailer in Saudi Arabia, setting the standard for quality, elegance, and customer experience while contributing positively to our community and environment.",
+    "values": {
+      "title": "Our Values",
+      "quality": {
+        "title": "Quality",
+        "description": "We source only the finest materials and partner with ethical manufacturers to ensure exceptional craftsmanship in every piece."
+      },
+      "elegance": {
+        "title": "Elegance",
+        "description": "We believe in timeless style that transcends trends, offering sophisticated designs that make women feel confident and beautiful."
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "description": "We are committed to responsible fashion practices that minimize environmental impact and promote ethical production standards."
+      },
+      "passion": {
+        "title": "Passion",
+        "description": "We pour our hearts into everything we do, from designing collections to providing exceptional customer service."
+      }
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "The passionate individuals behind HELDEN's success",
+      "members": {
+        "founder": {
+          "name": "Norah Al-Saud",
+          "position": "Founder & Creative Director",
+          "bio": "With over 15 years in luxury fashion, Norah brings her vision of elegant, culturally resonant fashion to Saudi women."
+        },
+        "operations": {
+          "name": "Sara Al-Qahtani",
+          "position": "Head of Operations",
+          "bio": "Sara ensures that every aspect of HELDEN runs smoothly, from supply chain to customer experience."
+        },
+        "design": {
+          "name": "Leila Mahmoud",
+          "position": "Lead Designer",
+          "bio": "A graduate of Central Saint Martins, Leila blends Western techniques with Middle Eastern aesthetics."
+        },
+        "marketing": {
+          "name": "Amal Ibrahim",
+          "position": "Marketing Director",
+          "bio": "Amal has revolutionized HELDEN's digital presence, creating authentic connections with our community."
+        }
+      }
+    },
+    "joinUs": {
+      "title": "Join the HELDEN Community",
+      "description": "Be part of our journey to redefine women's fashion in Saudi Arabia. Follow us on social media and sign up for our newsletter to stay updated on our latest collections and exclusive offers.",
+      "button": "Subscribe to Newsletter"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "heroTitle": "Get in Touch with HELDEN",
+    "heroSubtitle": "We're here to help with any questions about our collections, orders, or services.",
+    "getInTouch": "Contact Information",
+    "getInTouchText": "Have questions or need assistance? Our dedicated customer support team is ready to help you with any inquiries, from product information to order tracking.",
+    "sendMessage": "Send Us a Message",
+    "followUs": "Follow Us",
+    "ourLocation": "Our Store",
+    "address": {
+      "title": "Visit Our Store",
+      "content": "Al Olaya District, Riyadh, Saudi Arabia"
+    },
+    "phone": {
+      "title": "Call Us",
+      "content": "+966 53 123 4567"
+    },
+    "email": {
+      "title": "Email Us",
+      "content": "info@helden.sa"
+    },
+    "hours": {
+      "title": "Opening Hours",
+      "content": "Sunday to Thursday: 10AM - 10PM\nFriday & Saturday: 2PM - 11PM"
+    },
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "phone": "Phone Number",
+      "subject": "Subject",
+      "selectSubject": "Select a subject",
+      "subjects": {
+        "order": "Order Inquiry",
+        "product": "Product Information",
+        "shipping": "Shipping & Delivery",
+        "returns": "Returns & Exchanges",
+        "other": "Other Inquiry"
+      },
+      "message": "Your Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "successMessage": "Thank you for your message! We'll get back to you shortly.",
+      "errorMessage": "There was an error sending your message. Please try again later."
+    }
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "subtitle": "Please read these terms carefully before using our services.",
+    "lastUpdated": "Last Updated",
+    "welcome": "Welcome to HELDEN. By accessing our website and services, you agree to be bound by the following terms and conditions. These terms govern your use of our website, mobile applications, and all related services offered by HELDEN.",
+    "quickLinks": "Quick Navigation",
+    "sections": {
+      "account": {
+        "title": "User Accounts",
+        "content": "When you create an account with HELDEN, you are responsible for maintaining the confidentiality of your account details and password. You agree to accept responsibility for all activities that occur under your account. If you suspect unauthorized use of your account, you must notify us immediately. We reserve the right to refuse service, terminate accounts, or cancel orders at our discretion."
+      },
+      "orders": {
+        "title": "Orders & Purchases",
+        "content": "By placing an order with HELDEN, you are making an offer to purchase products. All orders are subject to acceptance and availability. We reserve the right to refuse any order without giving reason. Once we accept your order, we will confirm this by sending an order confirmation email. The contract for sale of products is formed when we send this email."
+      },
+      "shipping": {
+        "title": "Shipping & Delivery",
+        "content": "HELDEN currently ships within Saudi Arabia only. Standard delivery typically takes 3-5 business days, while express delivery is available for 1-2 business days. Delivery times are estimates and not guaranteed. We are not responsible for delays beyond our control. Risk of loss and title for items purchased pass to you upon delivery of the items to the carrier."
+      },
+      "returns": {
+        "title": "Returns & Refunds",
+        "content": "You may return most new, unopened items within 14 days of delivery for a full refund. We'll also pay the return shipping costs if the return is a result of our error. To be eligible for a return, your item must be unused and in the same condition that you received it, with all original packaging and tags. To initiate a return, please contact our customer service team."
+      },
+      "payment": {
+        "title": "Payment Terms",
+        "content": "We accept various payment methods including credit/debit cards, Mada, Apple Pay, and bank transfers. All payments are processed securely through our payment partners. Prices for products are as quoted on our website and are inclusive of VAT where applicable. We reserve the right to change prices for products displayed at any time, and to correct pricing errors."
+      },
+      "privacy": {
+        "title": "Privacy & Data Protection",
+        "content": "Your privacy is important to us. Our Privacy Policy, which is incorporated into these Terms and Conditions, explains how we collect, use, and protect your personal information. By using our services, you consent to our collection and use of personal data as outlined in our Privacy Policy."
+      },
+      "intellectual": {
+        "title": "Intellectual Property",
+        "content": "All content included on HELDEN's website and services, such as text, graphics, logos, images, and software, is the property of HELDEN or its content suppliers and is protected by international copyright laws. The compilation of all content on this site is the exclusive property of HELDEN. You may not reproduce, duplicate, copy, sell, resell, or exploit any portion of the service without express written permission."
+      }
+    },
+    "contact": {
+      "title": "Questions About Our Terms?",
+      "content": "If you have any questions or concerns about our Terms and Conditions, please don't hesitate to contact us:",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address"
+    }
+  },
+  "products": {
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "lowStock": "Low Stock",
+    "limitedStock": "Limited Stock",
+    "addToCart": "Add to Cart",
+    "addToWishlist": "Add to Wishlist",
+    "removeFromWishlist": "Remove from Wishlist",
+    "sale": "Sale",
+    "new": "New",
+    "bestseller": "Bestseller",
+    "featured": "Featured",
+    "categories": "Categories",
+    "filters": {
+      "categories": "Categories"
+    },
+    "price": "Price",
+    "color": "Color",
+    "size": "Size",
+    "brand": "Brand",
+    "sort": {
+      "title": "Sort By",
+      "newest": "Newest",
+      "priceAsc": "Price: Low to High",
+      "priceDesc": "Price: High to Low"
+    },
+    "sortBy": "Sort By",
+    "priceHighToLow": "Price: High to Low",
+    "priceLowToHigh": "Price: Low to High",
+    "popularity": "Popularity",
+    "rating": "Rating",
+    "reviews": "Reviews",
+    "noReviews": "No reviews yet",
+    "writeReview": "Write a Review",
+    "viewDetails": "View Details",
+    "relatedProducts": "Related Products",
+    "youMayAlsoLike": "You May Also Like",
+    "recentlyViewed": "Recently Viewed",
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "applyFilters": "Apply Filters",
+    "clearFilters": "Clear Filters",
+    "noProductsFound": "No products found",
+    "searchResults": "Search Results",
+    "imageNote": "Some text in product images is part of the original design",
+    "noResults": "No products found",
+    "tryDifferentFilters": "Try different filters or search terms",
+    "title": "Products",
+    "items": {
+      "elegant_abaya": {
+        "name": "Elegant Abaya",
+        "description": "A sophisticated abaya crafted with premium fabric, featuring elegant embroidery details."
+      },
+      "casual_abaya": {
+        "name": "Casual Abaya",
+        "description": "A comfortable everyday abaya made from lightweight breathable fabric, perfect for casual outings."
+      },
+      "embellished_abaya": {
+        "name": "Embellished Abaya",
+        "description": "A luxurious abaya adorned with intricate beadwork and embellishments, perfect for special occasions."
+      },
+      "contour_body_shaper": {
+        "name": "Contour Body Shaper",
+        "description": "Premium body shaper designed to contour and enhance your natural silhouette comfortably."
+      },
+      "casual_clothes": {
+        "name": "Casual Outfit",
+        "description": "Comfortable and stylish casual wear for everyday elegance."
+      },
+      "casual_thobe": {
+        "name": "Casual Thobe",
+        "description": "A comfortable and stylish thobe made from high-quality cotton, perfect for everyday wear."
+      },
+      "premium_thobe": {
+        "name": "Premium Thobe",
+        "description": "An elegant premium thobe crafted with the finest materials, featuring subtle detailing and a refined finish."
+      },
+      "leather_sandals": {
+        "name": "Leather Sandals",
+        "description": "Handcrafted leather sandals featuring traditional designs with modern comfort."
+      },
+      "casual_bag": {
+        "name": "Casual Bag",
+        "description": "A versatile casual bag with multiple compartments, perfect for everyday use."
+      },
+      "modern_hijab": {
+        "name": "Modern Hijab",
+        "description": "A contemporary hijab made from premium fabric with a smooth finish and elegant drape."
+      }
+    },
+    "viewIn3D": "View in 3D",
+    "enableAR": "Enable AR View",
+    "disableAR": "Disable AR View",
+    "resetView": "Reset View",
+    "arNotSupported": "AR not supported on this device",
+    "dragToRotate": "Drag to rotate, pinch to zoom",
+    "cameraPermissionDenied": "Camera access denied. Please enable camera permissions to use AR features.",
+    "clickToZoom": "Click to zoom",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "image": "Image",
+    "smallImage": "Thumbnail",
+    "quantity": "Quantity",
+    "viewImage": "View image",
+    "view360": "View 360°",
+    "frame": "Frame",
+    "dragToSpin": "Drag to spin",
+    "autoRotate": "Auto Rotate",
+    "stopRotation": "Stop Rotation",
+    "rotate360": "Rotate 360°",
+    "gallery": "Gallery",
+    "noFramesAvailable": "360° view not available"
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "account": "Account",
+    "wishlist": "Wishlist",
+    "closeMenu": "Close Menu",
+    "openMenu": "Open Menu"
+  },
+  "footer": {
+    "categories": "Categories",
+    "customerService": "Customer Service",
+    "trackOrder": "Track Order",
+    "returns": "Returns & Refunds",
+    "shipping": "Shipping Information",
+    "faq": "FAQ",
+    "contactUs": "Contact Us",
+    "aboutUs": "About Us",
+    "termsConditions": "Terms & Conditions",
+    "privacyPolicy": "Privacy Policy",
+    "copyright": "© 2023 HELDEN. All rights reserved.",
+    "newsletter": "Newsletter",
+    "newsletterText": "Stay updated with our latest offers and products",
+    "subscribe": "Subscribe",
+    "emailPlaceholder": "Your email address",
+    "quickLinks": "Quick Links",
+    "allRightsReserved": "All Rights Reserved",
+    "paymentMethods": "Payment Methods"
+  },
+  "filters": {
+    "filters": "Filters",
+    "clearAll": "Clear All",
+    "apply": "Apply Filters",
+    "categories": "Categories",
+    "price": "Price Range",
+    "size": "Size",
+    "color": "Color",
+    "sortBy": {
+      "newest": "Newest",
+      "priceAsc": "Price: Low to High",
+      "priceDesc": "Price: High to Low",
+      "bestseller": "Best Seller",
+      "rating": "Rating",
+      "discount": "Discount"
+    }
+  },
+  "sizes": {
+    "S": "Small",
+    "M": "Medium",
+    "L": "Large",
+    "XL": "Extra Large"
+  },
+  "discounts": {
+    "off": "Off",
+    "sale": "Sale"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "forgotPassword": "Forgot Password?",
+    "rememberMe": "Remember Me",
+    "welcomeBack": "Welcome Back",
+    "loginSubtitle": "Sign in to access your account",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create Account",
+    "orContinueWith": "Or continue with",
+    "errorFields": "Please fill in all fields",
+    "errorLogin": "Invalid email or password",
+    "login": "Login",
+    "noAccount": "Don't have an account?",
+    "orContinueWith": "Or continue with"
+  },
+  "cart": {
+    "title": "Shopping Cart"
+  },
+  "error": {
+    "tryAgain": "Try Again",
+    "general": {
+      "title": "Something went wrong",
+      "message": "We encountered an unexpected error",
+      "suggestion": "Please try again or contact our support team if the problem persists"
+    },
+    "404": {
+      "title": "Page Not Found",
+      "message": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable",
+      "suggestion": "Please check the URL or navigate to our homepage to find what you're looking for"
+    },
+    "500": {
+      "title": "Server Error",
+      "message": "Our server encountered an error and could not complete your request",
+      "suggestion": "This is a temporary issue. Please try again later"
+    },
+    "emptyCart": {
+      "title": "Your cart is empty",
+      "message": "You haven't added any items to your cart yet",
+      "suggestion": "Browse our collections to find something you'll love"
+    },
+    "productNotFound": {
+      "title": "Product Not Found",
+      "message": "The product you're looking for is not available",
+      "suggestion": "It may have been removed or sold out. Browse our other products instead"
+    },
+    "paymentFailed": {
+      "title": "Payment Failed",
+      "message": "We couldn't process your payment",
+      "suggestion": "Please check your payment details and try again, or use a different payment method"
+    }
+  },
+  "admin": {
+    "manage3DAssets": "Manage 3D Assets",
+    "assets": "Assets",
+    "upload3DModel": "Upload 3D Model",
+    "upload360Frames": "Upload 360° Frames",
+    "3dModels": "3D Models",
+    "360Frames": "360° Frames",
+    "preview": "Preview",
+    "delete": "Delete",
+    "no3DModels": "No 3D models have been uploaded for this product",
+    "no360Frames": "No 360° frames have been uploaded for this product",
+    "framesUploaded": "frames uploaded",
+    "select3DAssets": "Select a product to manage 3D assets",
+    "select3DAssetsDescription": "Choose a product from the list to view and manage its 3D models and 360° view frames.",
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "products": "Products",
+      "3dAssets": "3D Assets"
+    }
+  }
+} 
