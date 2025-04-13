@@ -13,6 +13,8 @@ const client = createClient<Database>(supabaseUrl, supabaseAnonKey);
 
 console.log('Using real Supabase client with provided credentials');
 
+// Export the client as 'supabase' (this export was missing)
+export const supabase = client;
 export default client;
 
 // Auth helper functions
