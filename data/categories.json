@@ -1,0 +1,29 @@
+[
+  {
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "name": "Abayas",
+    "slug": "abayas",
+    "description": "Modern and elegant abayas for all occasions",
+    "image_url": "/images/Abayas/SaudiAbayas.jpg",
+    "created_at": "2025-04-13T18:41:36.171Z",
+    "updated_at": "2025-04-13T18:41:36.172Z"
+  },
+  {
+    "id": "223e4567-e89b-12d3-a456-426614174001",
+    "name": "Dresses",
+    "slug": "dresses",
+    "description": "Stylish dresses for modern Saudi women",
+    "image_url": "/images/formal_wear/formal_wear_1.jpg",
+    "created_at": "2025-04-13T18:41:36.172Z",
+    "updated_at": "2025-04-13T18:41:36.172Z"
+  },
+  {
+    "id": "323e4567-e89b-12d3-a456-426614174002",
+    "name": "Sportswear",
+    "slug": "sportswear",
+    "description": "Comfortable and fashionable sportswear",
+    "image_url": "/images/Saudi-women-sportswear/Saudi_women_sportswear.jpg",
+    "created_at": "2025-04-13T18:41:36.172Z",
+    "updated_at": "2025-04-13T18:41:36.172Z"
+  }
+]

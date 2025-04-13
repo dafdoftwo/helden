@@ -1,16 +1,11 @@
 import { MetadataRoute } from 'next';
-import { createClient } from '@supabase/supabase-js';
 
-// Initialize Supabase client
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://helden-store.com';
+// Static sitemap that doesn't rely on database queries
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://helden-ef55f.web.app';
   
   // Define static pages
-  const staticPages = [
+  return [
     {
       url: `${baseUrl}`,
       lastModified: new Date(),
@@ -51,54 +46,67 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       priority: 0.9,
     },
+    // Hard-coded category pages
+    {
+      url: `${baseUrl}/categories/abayas`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ar/categories/abayas`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/categories/dresses`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ar/categories/dresses`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/categories/sportswear`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ar/categories/sportswear`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    // Hard-coded product pages
+    {
+      url: `${baseUrl}/products/elegant-abaya`,
+      lastModified: new Date(),
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/ar/products/elegant-abaya`,
+      lastModified: new Date(),
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/products/casual-dress`,
+      lastModified: new Date(),
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/ar/products/casual-dress`,
+      lastModified: new Date(),
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/products/workout-set`,
+      lastModified: new Date(),
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/ar/products/workout-set`,
+      lastModified: new Date(),
+      priority: 0.7,
+    },
   ];
-
-  // Fetch categories
-  const { data: categories, error: categoriesError } = await supabase
-    .from('categories')
-    .select('id, slug, updated_at');
-  
-  if (categoriesError) {
-    console.error('Error fetching categories for sitemap:', categoriesError);
-  }
-  
-  // Add category pages to sitemap
-  const categoryPages = categories?.map(category => [
-    {
-      url: `${baseUrl}/categories/${category.slug}`,
-      lastModified: new Date(category.updated_at || new Date()),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/ar/categories/${category.slug}`,
-      lastModified: new Date(category.updated_at || new Date()),
-      priority: 0.8,
-    }
-  ]).flat() || [];
-  
-  // Fetch products
-  const { data: products, error: productsError } = await supabase
-    .from('products')
-    .select('id, slug, updated_at');
-  
-  if (productsError) {
-    console.error('Error fetching products for sitemap:', productsError);
-  }
-  
-  // Add product pages to sitemap
-  const productPages = products?.map(product => [
-    {
-      url: `${baseUrl}/products/${product.slug}`,
-      lastModified: new Date(product.updated_at || new Date()),
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/ar/products/${product.slug}`,
-      lastModified: new Date(product.updated_at || new Date()),
-      priority: 0.7,
-    }
-  ]).flat() || [];
-  
-  // Combine all pages
-  return [...staticPages, ...categoryPages, ...productPages];
 } 

@@ -1,0 +1,41 @@
+[
+  {
+    "id": "423e4567-e89b-12d3-a456-426614174003",
+    "name": "Elegant Abaya",
+    "slug": "elegant-abaya",
+    "description": "A beautiful black abaya with gold embroidery",
+    "price": 499.99,
+    "image_urls": "[\"/images/Abayas/Saudi_Abayas_1.jpg\",\"/images/Abayas/Saudi_Abayas_2.jpg\"]",
+    "category_id": "123e4567-e89b-12d3-a456-426614174000",
+    "stock_quantity": 15,
+    "is_featured": true,
+    "created_at": "2025-04-13T18:41:36.172Z",
+    "updated_at": "2025-04-13T18:41:36.172Z"
+  },
+  {
+    "id": "523e4567-e89b-12d3-a456-426614174004",
+    "name": "Casual Dress",
+    "slug": "casual-dress",
+    "description": "Comfortable casual dress for everyday wear",
+    "price": 299.99,
+    "image_urls": "[\"/images/casual_clothes/Saudi_casual_clothes_1.jpg\"]",
+    "category_id": "223e4567-e89b-12d3-a456-426614174001",
+    "stock_quantity": 10,
+    "is_featured": true,
+    "created_at": "2025-04-13T18:41:36.172Z",
+    "updated_at": "2025-04-13T18:41:36.172Z"
+  },
+  {
+    "id": "623e4567-e89b-12d3-a456-426614174005",
+    "name": "Workout Set",
+    "slug": "workout-set",
+    "description": "Comfortable and stylish workout set for active women",
+    "price": 199.99,
+    "image_urls": "[\"/images/Saudi-women-sportswear/Saudi_women_sportswear.jpg\"]",
+    "category_id": "323e4567-e89b-12d3-a456-426614174002",
+    "stock_quantity": 20,
+    "is_featured": false,
+    "created_at": "2025-04-13T18:41:36.172Z",
+    "updated_at": "2025-04-13T18:41:36.172Z"
+  }
+]

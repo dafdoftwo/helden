@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "Helden Store"
+location: "asia-east1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "helden123"
+      cloudSql:
+        instanceId: "helden store-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

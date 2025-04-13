@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "helden-ef55f"
-  }
-} 
+  },
+  "targets": {
+    "helden-ef55f": {
+      "hosting": {
+        "app": [
+          "helden-ef55f"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

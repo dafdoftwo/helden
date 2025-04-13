@@ -1,24 +1,11 @@
 {
   "hosting": {
-    "source": ".",
+    "target": "app",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**",
-      "**/.git/**",
-      "**/README.md",
-      "**/roadmap.md",
-      "**/supabase/**"
-    ],
-    "frameworksBackend": {
-      "region": "us-central1"
-    }
-  },
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
-  "storage": {
-    "rules": "storage.rules"
+      "**/node_modules/**"
+    ]
   }
-} 
+}
