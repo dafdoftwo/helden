@@ -16,13 +16,20 @@ const firebaseConfig = {
   measurementId: "G-EFRGJF0H2X"
 };
 
-// Initialize Firebase
-const app = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
-const analytics = typeof window !== 'undefined' ? getAnalytics(app) : null;
+// Initialize Firebase only on client side
+let app;
+let analytics;
+let auth;
+let db;
+let storage;
 
-// Export the Firebase services
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const storage = getStorage(app);
+if (typeof window !== 'undefined') {
+  app = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
+  analytics = getAnalytics(app);
+  auth = getAuth(app);
+  db = getFirestore(app);
+  storage = getStorage(app);
+}
 
+export { app, analytics, auth, db, storage };
 export default app;

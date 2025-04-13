@@ -5,11 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next build && next export",
     "start": "next start",
     "lint": "next lint",
     "firebase-deploy": "firebase deploy",
-    "deploy": "next build && firebase deploy",
-    "deploy:ci": "next build && firebase deploy --token \"$FIREBASE_TOKEN\""
+    "deploy": "next build && firebase deploy --only hosting",
+    "deploy:ci": "next build && firebase deploy --token \"$FIREBASE_TOKEN\" --only hosting",
+    "deploy:rules": "firebase deploy --only firestore,storage"
   },
   "keywords": [
     "ecommerce",
@@ -34,7 +36,6 @@
     "autoprefixer": "^10.4.18",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "dotenv": "^16.5.0",
     "firebase": "^10.14.1",
     "firebase-admin": "^11.11.1",
     "framer-motion": "^12.5.0",
