@@ -1,50 +1,33 @@
 rules_version = '2';
+
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Base rules
-    match /{document=**} {
-      allow read: if false;
-      allow write: if false;
-    }
-    
-    // Product rules
-    match /products/{productId} {
-      allow read: if true; // Anyone can read products
-      allow write: if request.auth != null && request.auth.token.admin == true;
-    }
-    
-    // Category rules
+    // Allow public read access to categories
     match /categories/{categoryId} {
-      allow read: if true; // Anyone can read categories
+      allow read: if true;
       allow write: if request.auth != null && request.auth.token.admin == true;
     }
     
-    // User profile rules
-    match /profiles/{userId} {
-      allow read: if request.auth != null && request.auth.uid == userId;
-      allow write: if request.auth != null && request.auth.uid == userId;
+    // Allow public read access to products
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
     }
     
-    // Order rules
+    // Orders can only be read/written by the user who created them
     match /orders/{orderId} {
-      allow read: if request.auth != null && (
-                   resource.data.userId == request.auth.uid || 
-                   request.auth.token.admin == true
-                 );
-      allow create: if request.auth != null;
-      allow update: if request.auth != null && request.auth.token.admin == true;
+      allow read: if request.auth != null && (request.auth.uid == resource.data.userId || request.auth.token.admin == true);
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
+      allow update: if request.auth != null && (request.auth.uid == resource.data.userId || request.auth.token.admin == true);
       allow delete: if request.auth != null && request.auth.token.admin == true;
     }
     
-    // Favorites/wishlist rules
-    match /favorites/{favoriteId} {
-      allow read: if request.auth != null && resource.data.userId == request.auth.uid;
-      allow write: if request.auth != null && request.resource.data.userId == request.auth.uid;
-    }
-    
-    // Admin access
-    match /admin/{document=**} {
-      allow read, write: if request.auth != null && request.auth.token.admin == true;
+    // User profiles can only be read/written by the user or admin
+    match /users/{userId} {
+      allow read: if request.auth != null && (request.auth.uid == userId || request.auth.token.admin == true);
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update: if request.auth != null && (request.auth.uid == userId || request.auth.token.admin == true);
+      allow delete: if request.auth != null && request.auth.token.admin == true;
     }
   }
 } 
