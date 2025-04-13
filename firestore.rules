@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Base rules
+    match /{document=**} {
+      allow read: if false;
+      allow write: if false;
+    }
+    
+    // Product rules
+    match /products/{productId} {
+      allow read: if true; // Anyone can read products
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+    
+    // Category rules
+    match /categories/{categoryId} {
+      allow read: if true; // Anyone can read categories
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+    
+    // User profile rules
+    match /profiles/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Order rules
+    match /orders/{orderId} {
+      allow read: if request.auth != null && (
+                   resource.data.userId == request.auth.uid || 
+                   request.auth.token.admin == true
+                 );
+      allow create: if request.auth != null;
+      allow update: if request.auth != null && request.auth.token.admin == true;
+      allow delete: if request.auth != null && request.auth.token.admin == true;
+    }
+    
+    // Favorites/wishlist rules
+    match /favorites/{favoriteId} {
+      allow read: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow write: if request.auth != null && request.resource.data.userId == request.auth.uid;
+    }
+    
+    // Admin access
+    match /admin/{document=**} {
+      allow read, write: if request.auth != null && request.auth.token.admin == true;
+    }
+  }
+} 
