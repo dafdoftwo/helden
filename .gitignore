@@ -42,5 +42,8 @@ next-env.d.ts
 # Firebase cache
 .firebase/
 
+# Firebase service account
+serviceAccountKey.json
+
 # Optional: Large media files you don't want in your repo
 # /public/images/large-assets/ 
