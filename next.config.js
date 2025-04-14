@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  distDir: 'out',
   images: {
     domains: ['localhost'],
     remotePatterns: [
@@ -8,6 +10,7 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+    unoptimized: true,
   },
   typescript: {
     // Ignore TypeScript errors during build for now

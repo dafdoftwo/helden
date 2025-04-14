@@ -4,20 +4,25 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslation } from '@/i18n/client';
 import { FiPackage, FiTruck, FiCalendar, FiDollarSign } from 'react-icons/fi';
+import { mockShippingProviders } from '@/lib/mock-data';
 
 interface ShippingProvider {
-  id: number;
+  id: string | number;
   name: string;
-  description: string;
-  logo: string;
-  delivery_days: number;
-  base_cost: number;
-  priority: number;
+  description?: string;
+  logo?: string;
+  delivery_days?: number;
+  deliveryTime?: string;
+  base_cost?: number;
+  price?: number;
+  priority?: number;
+  currency?: string;
+  isPopular?: boolean;
 }
 
 interface ShippingProviderSelectorProps {
-  selectedProvider: number | null;
-  onSelect: (providerId: number) => void;
+  selectedProvider: number | string | null;
+  onSelect: (providerId: number | string) => void;
   setShippingCost: (cost: number) => void;
   address: {
     city: string;
@@ -42,60 +47,57 @@ const ShippingProviderSelector: React.FC<ShippingProviderSelectorProps> = ({
   useEffect(() => {
     const fetchShippingProviders = async () => {
       try {
-        const response = await fetch('/api/shipping/providers');
-        if (!response.ok) {
-          throw new Error('Failed to fetch shipping providers');
-        }
-        
-        const data = await response.json();
-        setProviders(data.providers || []);
-        
-        // Auto-select the first provider if none is selected
-        if (data.providers?.length > 0 && !selectedProvider) {
-          onSelect(data.providers[0].id);
+        // For static export, use mock data instead of API call
+        setTimeout(() => {
+          const mapProviders = mockShippingProviders.map(provider => ({
+            id: provider.id,
+            name: provider.name,
+            description: `${provider.deliveryTime} delivery`,
+            logo: provider.logo,
+            delivery_days: parseInt(provider.deliveryTime.split('-')[1]) || 3,
+            base_cost: provider.price,
+            priority: provider.isPopular ? 1 : 0
+          }));
+
+          setProviders(mapProviders);
           
-          // Calculate shipping cost for the first provider
-          calculateShippingCost(data.providers[0]);
-        }
+          // Auto-select the first provider if none is selected
+          if (mapProviders.length > 0 && !selectedProvider) {
+            onSelect(mapProviders[0].id);
+            setShippingCost(mapProviders[0].base_cost || 0);
+          }
+          
+          setLoading(false);
+        }, 800); // Simulate network delay
       } catch (err) {
         console.error('Error fetching shipping providers:', err);
         setError('Unable to load shipping options');
-      } finally {
         setLoading(false);
       }
     };
     
     fetchShippingProviders();
-  }, [selectedProvider, onSelect]);
+  }, [selectedProvider, onSelect, setShippingCost]);
   
   // Calculate shipping cost when provider or address changes
-  const calculateShippingCost = async (provider: ShippingProvider) => {
-    try {
-      if (!address.city || !items.length) return;
-      
-      const response = await fetch('/api/shipping/providers', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          address,
-          items,
-          provider: provider.id,
-        }),
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to calculate shipping cost');
+  const calculateShippingCost = (provider: ShippingProvider) => {
+    // For static export, use provider's base cost plus a small city-based modifier
+    const baseCost = provider.base_cost || 0;
+    let cityModifier = 0;
+    
+    if (address.city) {
+      const cityLower = address.city.toLowerCase();
+      if (cityLower === 'riyadh') {
+        cityModifier = 0;
+      } else if (cityLower === 'jeddah' || cityLower === 'dammam') {
+        cityModifier = 5;
+      } else {
+        cityModifier = 10;
       }
-      
-      const data = await response.json();
-      setShippingCost(data.cost || provider.base_cost);
-    } catch (err) {
-      console.error('Error calculating shipping cost:', err);
-      // Fallback to base cost
-      setShippingCost(provider.base_cost);
     }
+    
+    const totalCost = baseCost + cityModifier;
+    setShippingCost(totalCost);
   };
   
   // Handle provider selection

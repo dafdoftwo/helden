@@ -181,6 +181,17 @@ const mockProducts = [
   }
 ];
 
+export function generateStaticParams() {
+  return [
+    { locale: 'en', slug: 'abayas' },
+    { locale: 'ar', slug: 'abayas' },
+    { locale: 'en', slug: 'dresses' },
+    { locale: 'ar', slug: 'dresses' },
+    { locale: 'en', slug: 'sportswear' },
+    { locale: 'ar', slug: 'sportswear' }
+  ];
+}
+
 export default function CategoryPage({ params }: { params: { locale: string, slug: string } }) {
   const { t, dir } = useTranslation();
   const { slug } = params;

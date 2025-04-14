@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
+// Prevent this route from being statically generated for export
+export const dynamic = "error";
+
 interface TrackingInfo {
   trackingNumber: string;
   provider: string;

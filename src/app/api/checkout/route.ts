@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { StripeProduct } from '@/models/product';
 
+// Prevent this route from being statically generated for export
+export const dynamic = "error";
+
 // Initialize Stripe without specifying an API version
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 

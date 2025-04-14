@@ -1,11 +1,14 @@
 import { MetadataRoute } from 'next';
 
-// Static sitemap that doesn't rely on database queries
+// Force static generation for sitemap in export mode  
+export const dynamic = "force-static";
+
+// For static exports, we need to use dummy data since we can't fetch from databases
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://helden-ef55f.web.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://helden-store.com';
   
   // Define static pages
-  return [
+  const staticPages = [
     {
       url: `${baseUrl}`,
       lastModified: new Date(),
@@ -46,17 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       priority: 0.9,
     },
-    // Hard-coded category pages
-    {
-      url: `${baseUrl}/categories/abayas`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/ar/categories/abayas`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
+    // Add some dummy category pages
     {
       url: `${baseUrl}/categories/dresses`,
       lastModified: new Date(),
@@ -68,16 +61,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/categories/sportswear`,
+      url: `${baseUrl}/categories/accessories`,
       lastModified: new Date(),
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/ar/categories/sportswear`,
+      url: `${baseUrl}/ar/categories/accessories`,
       lastModified: new Date(),
       priority: 0.8,
     },
-    // Hard-coded product pages
+    // Add some dummy product pages
     {
       url: `${baseUrl}/products/elegant-abaya`,
       lastModified: new Date(),
@@ -89,24 +82,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/products/casual-dress`,
+      url: `${baseUrl}/products/summer-dress`,
       lastModified: new Date(),
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/ar/products/casual-dress`,
-      lastModified: new Date(),
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/products/workout-set`,
-      lastModified: new Date(),
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/ar/products/workout-set`,
+      url: `${baseUrl}/ar/products/summer-dress`,
       lastModified: new Date(),
       priority: 0.7,
     },
   ];
+  
+  return staticPages;
 } 

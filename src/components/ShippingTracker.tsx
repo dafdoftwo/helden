@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { TruckIcon, MapPinIcon, PackageIcon, CheckCircleIcon } from 'lucide-react';
+import { mockTrackingInfo } from '@/lib/mock-data';
 
 interface ShippingEvent {
   date: string;
@@ -32,19 +33,29 @@ export default function ShippingTracker({ trackingNumber }: { trackingNumber: st
         setLoading(true);
         setError(null);
 
-        const response = await fetch(`/api/shipping/track?tracking_number=${trackingNumber}`);
-        
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || 'Failed to fetch tracking information');
-        }
-        
-        const data = await response.json();
-        setTrackingInfo(data);
+        // In a static export, use mock data instead of API call
+        // Mock the API response with our predefined data
+        setTimeout(() => {
+          const events = mockTrackingInfo.history.map(item => ({
+            date: item.timestamp,
+            status: item.status.toLowerCase().replace(' ', '_'),
+            location: item.location,
+            description: `Shipment ${item.status.toLowerCase()}`
+          }));
+          
+          setTrackingInfo({
+            trackingNumber: mockTrackingInfo.trackingNumber,
+            provider: 'Aramex',
+            status: mockTrackingInfo.status.toLowerCase().replace(' ', '_'),
+            estimatedDelivery: mockTrackingInfo.estimatedDelivery,
+            events: events,
+            trackingUrl: `https://www.aramex.com/track/${trackingNumber}`
+          });
+          setLoading(false);
+        }, 800); // Simulate network delay
       } catch (err) {
         console.error('Error fetching tracking info:', err);
         setError(err instanceof Error ? err.message : 'An unexpected error occurred');
-      } finally {
         setLoading(false);
       }
     };
