@@ -9,7 +9,12 @@ let stripePromise: Promise<Stripe | null>;
 export const getStripe = () => {
   if (!stripePromise) {
     // Process env variables in Next.js client components must be prefixed with NEXT_PUBLIC_
-    stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+    const key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+    if (!key) {
+      console.warn('Stripe publishable key is not set in environment variables');
+      return Promise.resolve(null);
+    }
+    stripePromise = loadStripe(key);
   }
   return stripePromise;
 };

@@ -1,10 +1,40 @@
+export const dynamic = "error";
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+// Add proper error handling for Stripe initialization
+let stripe: Stripe | undefined;
+let endpointSecret: string | undefined;
+
+try {
+  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  
+  if (!stripeKey) {
+    console.warn('Stripe secret key is not set in environment variables');
+  } else {
+    stripe = new Stripe(stripeKey);
+  }
+  
+  if (!webhookSecret) {
+    console.warn('Stripe webhook secret is not set in environment variables');
+  } else {
+    endpointSecret = webhookSecret;
+  }
+} catch (error) {
+  console.error('Failed to initialize Stripe:', error);
+}
 
 export async function POST(request: NextRequest) {
+  // Ensure Stripe is initialized
+  if (!stripe || !endpointSecret) {
+    console.error('Stripe is not properly initialized');
+    return NextResponse.json(
+      { error: 'Stripe configuration is missing' },
+      { status: 500 }
+    );
+  }
+
   try {
     const signature = request.headers.get('stripe-signature') || '';
     const body = await request.text();
@@ -69,6 +99,15 @@ async function handleCompletedCheckout(session: Stripe.Checkout.Session) {
 
 // GET handler for session verification
 export async function GET(request: NextRequest) {
+  // Ensure Stripe is initialized
+  if (!stripe) {
+    console.error('Stripe is not properly initialized');
+    return NextResponse.json(
+      { error: 'Stripe configuration is missing' },
+      { status: 500 }
+    );
+  }
+
   const { searchParams } = new URL(request.url);
   const sessionId = searchParams.get('session_id');
   

@@ -5,10 +5,29 @@ import { StripeProduct } from '@/models/product';
 // Prevent this route from being statically generated for export
 export const dynamic = "error";
 
-// Initialize Stripe without specifying an API version
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+// Initialize Stripe with proper error handling
+let stripe: Stripe | undefined;
+try {
+  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  if (!stripeKey) {
+    console.warn('Stripe secret key is not set in environment variables');
+  } else {
+    stripe = new Stripe(stripeKey);
+  }
+} catch (error) {
+  console.error('Failed to initialize Stripe:', error);
+}
 
 export async function POST(request: NextRequest) {
+  // Ensure Stripe is initialized
+  if (!stripe) {
+    console.error('Stripe is not properly initialized');
+    return NextResponse.json(
+      { error: 'Stripe configuration is missing' },
+      { status: 500 }
+    );
+  }
+
   try {
     const { cartItems, shippingAddress, paymentMethod } = await request.json();
     

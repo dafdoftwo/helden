@@ -1,12 +1,23 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
+// Prevent this route from being statically generated for export
+export const dynamic = "error";
+
 export async function POST(req: Request) {
   try {
     const { amount, currency = 'sar' } = await req.json();
     
-    // Initialize Stripe with the secret key
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
+    // Initialize Stripe with proper error handling
+    const stripeKey = process.env.STRIPE_SECRET_KEY;
+    if (!stripeKey) {
+      return NextResponse.json(
+        { error: 'Stripe API key is not configured' },
+        { status: 500 }
+      );
+    }
+    
+    const stripe = new Stripe(stripeKey);
     
     // Create the payment intent
     const paymentIntent = await stripe.paymentIntents.create({

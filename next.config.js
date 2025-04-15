@@ -1,16 +1,14 @@
 /** @type {import('next').NextConfig} */
-import { createSecureHeaders } from 'next-secure-headers';
-
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export is disabled to allow i18n
+  reactStrictMode: true,
   images: {
-    domains: ["helden.vip", "helden-store.vercel.app", "images.unsplash.com", "localhost"],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
+    domains: [
+      'images.unsplash.com',
+      'via.placeholder.com',
+      'firebasestorage.googleapis.com',
+      'lh3.googleusercontent.com',
+      'platform-lookaside.fbsbx.com',
+      'nqguyvjkbtkxsutfksuw.supabase.co',
     ],
   },
   typescript: {
@@ -24,26 +22,34 @@ const nextConfig = {
   async headers() {
     return [
       {
-        // Apply these headers to all routes
-        source: "/(.*)",
-        headers: createSecureHeaders({
-          contentSecurityPolicy: {
-            directives: {
-              defaultSrc: ["'self'"],
-              styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-              imgSrc: ["'self'", "data:", "https://*.supabase.co", "https://*.stripe.com"],
-              scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://*.stripe.com"],
-              connectSrc: ["'self'", "https://*.supabase.co", "https://*.stripe.com", "https://helden.vip"],
-              fontSrc: ["'self'", "https://fonts.gstatic.com"],
-              frameSrc: ["'self'", "https://*.stripe.com"],
-            },
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value:
+              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://*.firebaseio.com https://*.googleapis.com https://*.googletagmanager.com https://*.stripe.com https://*.facebook.net; connect-src 'self' https://*.googleapis.com https://*.google-analytics.com https://*.firebaseio.com https://*.cloudfunctions.net https://*.supabase.co https://*.stripe.com https://*.facebook.com; img-src 'self' data: https: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://*.stripe.com https://*.facebook.com; object-src 'none';",
           },
-          forceHTTPSRedirect: [
-            true,
-            { maxAge: 60 * 60 * 24 * 4, includeSubDomains: true },
-          ],
-          referrerPolicy: "strict-origin-when-cross-origin",
-        }),
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
       },
     ];
   },
@@ -64,19 +70,6 @@ const nextConfig = {
       },
     ];
   },
-
-  // i18n configuration
-  i18n: {
-    locales: ["en", "ar"],
-    defaultLocale: "ar",
-    localeDetection: false,
-  },
-
-  experimental: {
-    serverActions: {
-      allowedOrigins: ["helden.vip", "helden-store.vercel.app", "localhost:3000"]
-    }
-  },
 };
 
-export default nextConfig; 
+module.exports = nextConfig; 
