@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const { createSecureHeaders } = require('next-secure-headers');
+import { createSecureHeaders } from 'next-secure-headers';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -79,4 +79,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig; 
+export default nextConfig; 
