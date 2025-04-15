@@ -4,6 +4,7 @@ import I18nProvider from '@/components/I18nProvider';
 import CartSidebar from '@/components/CartSidebar';
 import { Providers } from '../providers';
 import '../globals.css';
+import '@/lib/supabase'; // Import Supabase to initialize it
 
 export const metadata: Metadata = {
   title: 'HELDEN Online Store',

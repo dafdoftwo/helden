@@ -2,16 +2,8 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-
-// Mock user type to replace Supabase User
-interface User {
-  id: string;
-  email?: string;
-  created_at: string;
-  user_metadata?: {
-    full_name?: string;
-  };
-}
+import client, { auth, getCurrentUser } from '@/lib/supabase';
+import { User } from '@supabase/supabase-js';
 
 interface AuthContextType {
   user: User | null;
@@ -24,130 +16,104 @@ interface AuthContextType {
   refreshUser: () => Promise<void>;
 }
 
-// Create Auth Context
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Mock authentication provider - replace Supabase with local storage implementation
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
+  // Function to fetch user data
+  const refreshUser = async () => {
+    try {
+      const currentUser = await getCurrentUser();
+      setUser(currentUser);
+    } catch (err: any) {
+      console.error('Error fetching user:', err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Initial auth state detection
   useEffect(() => {
-    // Check local storage for user on mount
-    const loadUser = () => {
-      try {
-        const storedUser = localStorage.getItem('auth_user');
-        if (storedUser) {
-          setUser(JSON.parse(storedUser));
-        }
-      } catch (err) {
-        console.error("Failed to load user from storage:", err);
-      } finally {
-        setLoading(false);
-      }
+    const initAuth = async () => {
+      setLoading(true);
+      await refreshUser();
     };
 
-    loadUser();
+    initAuth();
+
+    // Subscribe to auth changes
+    const { data: authListener } = client.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        await refreshUser();
+      } else if (event === 'SIGNED_OUT') {
+        setUser(null);
+      }
+    });
+
+    return () => {
+      // Clean up the subscription
+      authListener.subscription.unsubscribe();
+    };
   }, []);
 
-  // Sign in implementation
+  // Sign in with email/password
   const signIn = async (email: string, password: string) => {
     try {
       setLoading(true);
+      const { error } = await auth.signInWithEmail(email, password);
       
-      // In a real implementation, this would validate with a backend
-      // For now, we'll simulate a successful login
-      if (email && password) {
-        const mockUser: User = {
-          id: `user_${Date.now()}`,
-          email: email,
-          created_at: new Date().toISOString(),
-          user_metadata: {
-            full_name: email.split('@')[0]
-          }
-        };
-        
-        localStorage.setItem('auth_user', JSON.stringify(mockUser));
-        setUser(mockUser);
-        
-        return { success: true };
+      if (error) {
+        throw error;
       }
       
-      return {
-        success: false,
-        error: 'Invalid credentials'
-      };
+      await refreshUser();
+      return { success: true };
     } catch (err: any) {
-      setError(err.message || 'An error occurred during sign in');
-      return {
-        success: false,
-        error: err.message
-      };
+      console.error('Sign in error:', err);
+      return { success: false, error: err.message };
     } finally {
       setLoading(false);
     }
   };
 
-  // Sign up implementation
+  // Sign up with email/password
   const signUp = async (email: string, password: string, metadata?: Record<string, any>) => {
     try {
       setLoading(true);
+      const { error } = await auth.signUpWithEmail(email, password, metadata);
       
-      // Mock sign up functionality
-      const mockUser: User = {
-        id: `user_${Date.now()}`,
-        email: email,
-        created_at: new Date().toISOString(),
-        user_metadata: {
-          full_name: metadata?.full_name || email.split('@')[0]
-        }
-      };
-      
-      localStorage.setItem('auth_user', JSON.stringify(mockUser));
-      setUser(mockUser);
+      if (error) {
+        throw error;
+      }
       
       return { success: true };
     } catch (err: any) {
-      setError(err.message || 'An error occurred during sign up');
-      return {
-        success: false,
-        error: err.message
-      };
+      console.error('Sign up error:', err);
+      return { success: false, error: err.message };
     } finally {
       setLoading(false);
     }
   };
 
-  // Google sign in (mock)
+  // Sign in with Google
   const signInWithGoogle = async () => {
     try {
       setLoading(true);
+      const { error } = await auth.signInWithGoogle();
       
-      // Mock Google auth - in real implementation would redirect to Google
-      alert("Google authentication would happen here");
-      
-      // For demo purposes, create a mock Google user
-      const mockUser: User = {
-        id: `google_user_${Date.now()}`,
-        email: 'google_user@example.com',
-        created_at: new Date().toISOString(),
-        user_metadata: {
-          full_name: 'Google User'
-        }
-      };
-      
-      localStorage.setItem('auth_user', JSON.stringify(mockUser));
-      setUser(mockUser);
+      if (error) {
+        throw error;
+      }
       
       return { success: true };
     } catch (err: any) {
-      setError(err.message || 'An error occurred with Google sign in');
-      return {
-        success: false,
-        error: err.message
-      };
+      console.error('Google sign in error:', err);
+      return { success: false, error: err.message };
     } finally {
       setLoading(false);
     }
@@ -155,46 +121,43 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Sign out
   const signOut = async () => {
-    localStorage.removeItem('auth_user');
-    setUser(null);
-    router.push('/');
-  };
-
-  // Refresh user data
-  const refreshUser = async () => {
     try {
-      const storedUser = localStorage.getItem('auth_user');
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
-      }
-    } catch (err) {
-      console.error("Failed to refresh user:", err);
+      setLoading(true);
+      await auth.signOut();
+      setUser(null);
+      router.push('/');
+    } catch (err: any) {
+      console.error('Sign out error:', err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
+  const contextValue: AuthContextType = {
+    user,
+    loading,
+    error,
+    signIn,
+    signUp,
+    signInWithGoogle,
+    signOut,
+    refreshUser
+  };
+
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        loading,
-        error,
-        signIn,
-        signUp,
-        signInWithGoogle,
-        signOut,
-        refreshUser,
-      }}
-    >
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );
 }
 
-// Hook to use auth context
-export const useAuth = () => {
+export function useAuth() {
   const context = useContext(AuthContext);
+  
   if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
+  
   return context;
-}; 
+} 
