@@ -8,7 +8,6 @@ const nextConfig = {
       'firebasestorage.googleapis.com',
       'lh3.googleusercontent.com',
       'platform-lookaside.fbsbx.com',
-      'nqguyvjkbtkxsutfksuw.supabase.co',
     ],
   },
   typescript: {
@@ -27,7 +26,7 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://*.firebaseio.com https://*.googleapis.com https://*.googletagmanager.com https://*.stripe.com https://*.facebook.net; connect-src 'self' https://*.googleapis.com https://*.google-analytics.com https://*.firebaseio.com https://*.cloudfunctions.net https://*.supabase.co https://*.stripe.com https://*.facebook.com; img-src 'self' data: https: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://*.stripe.com https://*.facebook.com; object-src 'none';",
+              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://*.firebaseio.com https://*.googleapis.com https://*.googletagmanager.com https://*.stripe.com https://*.facebook.net; connect-src 'self' https://*.googleapis.com https://*.google-analytics.com https://*.firebaseio.com https://*.cloudfunctions.net https://*.stripe.com https://*.facebook.com; img-src 'self' data: https: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://*.stripe.com https://*.facebook.com; object-src 'none';",
           },
           {
             key: 'X-Content-Type-Options',
