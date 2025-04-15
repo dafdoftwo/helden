@@ -20,6 +20,8 @@ export function generateStaticParams() {
   ];
 }
 
+export const dynamic = 'force-dynamic';
+
 export default function LocaleLayout({
   children,
   params,

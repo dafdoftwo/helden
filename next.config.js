@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Use dynamic rendering for all pages
+  output: 'standalone',
+  staticPageGenerationTimeout: 1000,
   images: {
     domains: [
       'images.unsplash.com',
@@ -19,6 +22,13 @@ const nextConfig = {
     // Ignore ESLint errors during build for now
     ignoreDuringBuilds: true,
   },
+  
+  // Completely disable static generation
+  experimental: {
+    // This is to disable static file generation
+    disableStaticImages: true,
+  },
+
   async headers() {
     return [
       {
