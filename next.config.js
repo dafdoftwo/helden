@@ -2,17 +2,17 @@
 import { createSecureHeaders } from "next-secure-headers";
 
 const nextConfig = {
-  output: 'export',
-  distDir: 'out',
+  // Remove static export mode to use i18n
+  // output: 'export',
+  // distDir: 'out',
   images: {
-    domains: ['localhost'],
+    domains: ["helden.vip", "helden-store.vercel.app", "images.unsplash.com", "localhost"],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: '**',
       },
     ],
-    unoptimized: true,
   },
   typescript: {
     // Ignore TypeScript errors during build for now
@@ -70,15 +70,13 @@ const nextConfig = {
   i18n: {
     locales: ["en", "ar"],
     defaultLocale: "ar",
-    localeDetection: true,
-  },
-
-  images: {
-    domains: ["helden.vip", "helden-store.vercel.app", "images.unsplash.com"],
+    localeDetection: false,
   },
 
   experimental: {
-    serverActions: true,
+    serverActions: {
+      allowedOrigins: ["helden.vip", "helden-store.vercel.app", "localhost:3000"]
+    }
   },
 };
 
