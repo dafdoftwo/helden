@@ -8,7 +8,7 @@ import FeaturedProducts from '../components/FeaturedProducts';
 import TestimonialSlider from '@/components/TestimonialSlider';
 import Contact from '@/components/Contact';
 import Newsletter from '@/components/Newsletter';
-import { useTranslation } from '../i18n';
+import { useTranslation } from '@/i18n/client';
 import { motion } from 'framer-motion';
 import { FaInstagram } from 'react-icons/fa';
 
@@ -27,7 +27,7 @@ export default function HomePage() {
         <div className="absolute inset-0 z-0">
           <Image 
             src="/images/Abayas/SaudiAbayas.jpg" 
-            alt="HELDEN Fashion"
+            alt={t('common.brandName')}
             fill
             priority
             className="object-cover brightness-75"

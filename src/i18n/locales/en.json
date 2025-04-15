@@ -43,7 +43,23 @@
     "categories": "Categories",
     "sar": "SAR",
     "brandName": "HELDEN",
-    "storeName": "HELDEN Store"
+    "storeName": "HELDEN Store",
+    "loadMore": "Load More",
+    "myAccount": "My Account",
+    "myOrders": "My Orders",
+    "myWishlist": "My Wishlist",
+    "seeMore": "See More",
+    "seeAll": "See All",
+    "currency": "$",
+    "changeLanguage": "Change Language",
+    "searchPlaceholder": "Search for products...",
+    "outOfStock": "Out of Stock",
+    "inStock": "In Stock",
+    "lowStock": "Low Stock",
+    "back": "Back",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "continueShopping": "Continue Shopping"
   },
   "home": {
     "hero": {
@@ -65,11 +81,27 @@
       "title": "New Season Arrivals",
       "subtitle": "Be the first to discover our latest designs and collections",
       "cta": "Explore New Arrivals"
-    }
+    },
+    "heroTitle": "Elegance for Every Occasion",
+    "heroSubtitle": "Discover the latest in women's fashion at HELDEN",
+    "newArrivals": "New Arrivals",
+    "bestSellers": "Best Sellers",
+    "featuredProducts": "Featured Products",
+    "specialOffer": "Special Offer",
+    "exclusiveCollection": "Exclusive Collection",
+    "limitedEdition": "Limited Edition",
+    "trendingNow": "Trending Now"
   },
   "promotions": {
     "limitedOffer": "Limited Time Offer",
-    "discount": "Use code for 15% off your first order:"
+    "discount": "Use code for 15% off your first order:",
+    "title": "Current Promotions",
+    "freeShipping": "Free Shipping",
+    "freeShippingDesc": "On orders over $100",
+    "easyReturns": "Easy Returns",
+    "easyReturnsDesc": "30-day return policy",
+    "secureShopping": "Secure Shopping",
+    "secureShoppingDesc": "Protected payment"
   },
   "categories": {
     "abayas": "Abayas",
@@ -77,6 +109,7 @@
     "formal": "Formal Clothes",
     "sports": "Sportswear",
     "bodyShaper": "Body Shapers",
+    "body-shapers": "Body Shapers",
     "accessories": "Accessories",
     "about": {
       "abayas": {
@@ -103,7 +136,8 @@
         "title": "Accessories Collection",
         "description": "Stylish accessories to complement your wardrobe"
       }
-    }
+    },
+    "title": "Shop by Category"
   },
   "about": {
     "title": "About Us",
@@ -169,7 +203,7 @@
     "title": "Contact Us",
     "heroTitle": "Get in Touch with HELDEN",
     "heroSubtitle": "We're here to help with any questions about our collections, orders, or services.",
-    "getInTouch": "Contact Information",
+    "getInTouch": "Get in Touch",
     "getInTouchText": "Have questions or need assistance? Our dedicated customer support team is ready to help you with any inquiries, from product information to order tracking.",
     "sendMessage": "Send Us a Message",
     "followUs": "Follow Us",
@@ -304,7 +338,7 @@
     "title": "Products",
     "items": {
       "elegant_abaya": {
-        "name": "Elegant Abaya",
+        "name": "Elegant Embroidered Abaya",
         "description": "A sophisticated abaya crafted with premium fabric, featuring elegant embroidery details."
       },
       "casual_abaya": {
@@ -320,7 +354,7 @@
         "description": "Premium body shaper designed to contour and enhance your natural silhouette comfortably."
       },
       "casual_clothes": {
-        "name": "Casual Outfit",
+        "name": "Casual Everyday Outfit",
         "description": "Comfortable and stylish casual wear for everyday elegance."
       },
       "casual_thobe": {
@@ -342,6 +376,18 @@
       "modern_hijab": {
         "name": "Modern Hijab",
         "description": "A contemporary hijab made from premium fabric with a smooth finish and elegant drape."
+      },
+      "formal_wear": {
+        "name": "Formal Evening Dress",
+        "description": "A sophisticated and elegant evening dress for special occasions."
+      },
+      "active_sports": {
+        "name": "Active Sports Collection",
+        "description": "A collection of sportswear designed for active women."
+      },
+      "luxury_gold_abaya": {
+        "name": "Luxury Gold-Detailed Abaya",
+        "description": "A luxurious abaya adorned with intricate gold detailing and embellishments."
       }
     },
     "viewIn3D": "View in 3D",
@@ -365,7 +411,20 @@
     "stopRotation": "Stop Rotation",
     "rotate360": "Rotate 360°",
     "gallery": "Gallery",
-    "noFramesAvailable": "360° view not available"
+    "noFramesAvailable": "360° view not available",
+    "quickView": "Quick View",
+    "description": "Description",
+    "specifications": "Specifications",
+    "reviewsCount": "{{count}} Reviews",
+    "addReview": "Add Review",
+    "outOfStock": "Out of Stock",
+    "inStock": "In Stock",
+    "sizeguide": "Size Guide",
+    "chooseSize": "Choose Size",
+    "chooseColor": "Choose Color",
+    "filters": "Filters",
+    "priceRange": "Price Range",
+    "resetFilters": "Reset Filters"
   },
   "nav": {
     "home": "Home",
@@ -393,7 +452,14 @@
     "emailPlaceholder": "Your email address",
     "quickLinks": "Quick Links",
     "allRightsReserved": "All Rights Reserved",
-    "paymentMethods": "Payment Methods"
+    "paymentMethods": "Payment Methods",
+    "aboutShort": "HELDEN is a premium fashion brand dedicated to providing elegant and contemporary clothing for women. Our designs blend modern trends with timeless style.",
+    "deliveryPartners": "Delivery Partners",
+    "rightsReserved": "All Rights Reserved",
+    "workingHours": {
+      "weekdays": "Mon-Fri: 9:00 AM - 8:00 PM",
+      "weekend": "Sat-Sun: 10:00 AM - 6:00 PM"
+    }
   },
   "filters": {
     "filters": "Filters",
@@ -440,10 +506,33 @@
     "errorLogin": "Invalid email or password",
     "login": "Login",
     "noAccount": "Don't have an account?",
-    "orContinueWith": "Or continue with"
+    "orContinueWith": "Or continue with",
+    "confirmPassword": "Confirm Password",
+    "dontHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "resetPassword": "Reset Password",
+    "name": "Name",
+    "phoneNumber": "Phone Number",
+    "verifyEmail": "Verify Email",
+    "verificationCode": "Verification Code",
+    "verify": "Verify",
+    "resendCode": "Resend Code"
   },
   "cart": {
-    "title": "Shopping Cart"
+    "title": "Your Cart",
+    "emptyCart": "Your cart is empty",
+    "continueShopping": "Continue Shopping",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "checkout": "Checkout",
+    "shipping": "Shipping",
+    "tax": "Tax",
+    "discount": "Discount",
+    "applyCoupon": "Apply Coupon",
+    "couponCode": "Coupon Code",
+    "apply": "Apply",
+    "remove": "Remove",
+    "update": "Update"
   },
   "error": {
     "tryAgain": "Try Again",
@@ -497,5 +586,48 @@
       "products": "Products",
       "3dAssets": "3D Assets"
     }
+  },
+  "testimonials": {
+    "title": "What Our Customers Say",
+    "roles": {
+      "loyalCustomer": "Loyal Customer",
+      "fashionBlogger": "Fashion Blogger",
+      "workingProfessional": "Working Professional",
+      "universityStudent": "University Student"
+    },
+    "sarah": "I've been shopping at HELDEN for years, and their quality never disappoints. The materials are premium, and the designs are always in style. Highly recommend for any woman looking for elegant clothing.",
+    "fatima": "As a fashion blogger, I'm very selective about the brands I wear. HELDEN has consistently impressed me with their attention to detail and commitment to quality. Their abayas are a staple in my wardrobe.",
+    "noor": "Working in a corporate environment, I need clothing that is both professional and stylish. HELDEN's formal wear collection is perfect - modest yet modern, and always garnering compliments.",
+    "amina": "Being a university student, I need affordable yet stylish options, and HELDEN delivers exactly that. Their casual wear is perfect for my busy day-to-day life, and the prices don't break my budget."
+  },
+  "collections": {
+    "title": "Collections",
+    "summer": "Summer Collection",
+    "winter": "Winter Collection",
+    "exclusive": "Exclusive Collection",
+    "limited": "Limited Edition",
+    "trending": "Trending Now"
+  },
+  "account": {
+    "myAccount": "My Account",
+    "myOrders": "My Orders",
+    "myWishlist": "My Wishlist",
+    "myAddresses": "My Addresses",
+    "accountDetails": "Account Details",
+    "changePassword": "Change Password",
+    "editProfile": "Edit Profile",
+    "logout": "Logout",
+    "orderHistory": "Order History",
+    "viewOrder": "View Order",
+    "trackOrder": "Track Order",
+    "orderNumber": "Order Number",
+    "orderDate": "Order Date",
+    "orderStatus": "Order Status",
+    "orderTotal": "Order Total",
+    "shippingAddress": "Shipping Address",
+    "billingAddress": "Billing Address",
+    "paymentMethod": "Payment Method",
+    "orderItems": "Order Items",
+    "shippingMethod": "Shipping Method"
   }
 } 

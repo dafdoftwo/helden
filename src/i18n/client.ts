@@ -9,9 +9,9 @@ export const useTranslation = (forcedLocale?: Language) => {
     const baseContext = useProviderTranslation();
     
     // Create a custom t function that uses the forced locale
-    const t = (key: string): string => {
+    const t = (key: string, replacements?: Record<string, string>): string => {
       const keys = key.split('.');
-      let value = translations[forcedLocale];
+      let value: any = translations[forcedLocale];
 
       for (const k of keys) {
         if (value && typeof value === 'object' && k in value) {
@@ -19,6 +19,14 @@ export const useTranslation = (forcedLocale?: Language) => {
         } else {
           return key; // Return the key if translation is missing
         }
+      }
+
+      if (typeof value === 'string' && replacements) {
+        let result = value;
+        for (const [replaceKey, replaceValue] of Object.entries(replacements)) {
+          result = result.replace(new RegExp(`{{${replaceKey}}}`, 'g'), replaceValue);
+        }
+        return result;
       }
 
       return typeof value === 'string' ? value : key;

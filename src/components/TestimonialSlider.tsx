@@ -11,36 +11,36 @@ const testimonials = [
   {
     id: 1,
     name: 'Sarah Al-Qahtani',
-    role: 'Loyal Customer',
+    role: 'testimonials.roles.loyalCustomer',
     avatar: '/images/avatar1.jpg',
-    quote: 'HELDEN has completely transformed my wardrobe. The quality of their abayas is exceptional, and the staff is always so helpful. I love how I can find both traditional and modern designs in one place.',
+    quote: 'testimonials.quotes.sarah',
     rating: 5,
     location: 'Riyadh'
   },
   {
     id: 2,
     name: 'Fatima Hassan',
-    role: 'Fashion Blogger',
+    role: 'testimonials.roles.fashionBlogger',
     avatar: '/images/avatar2.jpg',
-    quote: 'As someone who reviews fashion brands for a living, I can confidently say that HELDEN stands out for its attention to detail and unique designs. Their customer service is also top-notch!',
+    quote: 'testimonials.quotes.fatima',
     rating: 5,
     location: 'Jeddah'
   },
   {
     id: 3,
     name: 'Noor Abdullah',
-    role: 'Working Professional',
+    role: 'testimonials.roles.professional',
     avatar: '/images/avatar3.jpg',
-    quote: 'I need clothing that looks professional but feels comfortable for long days at the office. HELDEN\'s collection has been perfect for me. The fabrics are breathable and the styles are elegant.',
+    quote: 'testimonials.quotes.noor',
     rating: 4,
     location: 'Dammam'
   },
   {
     id: 4,
     name: 'Amina Mohammed',
-    role: 'University Student',
+    role: 'testimonials.roles.student',
     avatar: '/images/avatar4.jpg',
-    quote: 'I discovered HELDEN through Instagram and couldn\'t be happier with my purchases. They have great options for young women who want to look stylish while respecting traditional values.',
+    quote: 'testimonials.quotes.amina',
     rating: 5,
     location: 'Mecca'
   }
@@ -123,7 +123,7 @@ const TestimonialSlider: React.FC = () => {
       
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What Our Customers Say</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t('testimonials.title')}</h2>
           <div className="w-24 h-1 bg-helden-gold mx-auto"></div>
         </div>
         
@@ -172,7 +172,7 @@ const TestimonialSlider: React.FC = () => {
                     <div className="relative mb-4">
                       <FaQuoteLeft className="absolute -top-2 -left-2 w-8 h-8 text-helden-gold opacity-20" />
                       <p className="text-gray-700 italic relative z-10">
-                        "{testimonials[currentIndex].quote}"
+                        "{t(testimonials[currentIndex].quote)}"
                       </p>
                     </div>
                     
@@ -181,7 +181,7 @@ const TestimonialSlider: React.FC = () => {
                         {testimonials[currentIndex].name}
                       </h4>
                       <p className="text-gray-500 text-sm">
-                        {testimonials[currentIndex].role}, {testimonials[currentIndex].location}
+                        {t(testimonials[currentIndex].role)}, {testimonials[currentIndex].location}
                       </p>
                     </div>
                   </div>

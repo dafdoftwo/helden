@@ -1,8 +1,5 @@
 import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
-import I18nProvider from '@/components/I18nProvider';
-import CartSidebar from '@/components/CartSidebar';
-import { Providers } from '../providers';
 import '../globals.css';
 import '@/lib/supabase'; // Import Supabase to initialize it
 
@@ -32,10 +29,8 @@ export default function LocaleLayout({
   const locale = params.locale || 'en';
 
   return (
-    <I18nProvider defaultLanguage={locale as 'en' | 'ar'}>
-      <div dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-        {children}
-      </div>
-    </I18nProvider>
+    <div dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+      {children}
+    </div>
   );
 }

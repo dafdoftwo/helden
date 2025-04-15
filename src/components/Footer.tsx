@@ -1,227 +1,205 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTranslation } from '@/i18n';
-import { FaInstagram, FaTwitter, FaTiktok, FaSnapchatGhost } from 'react-icons/fa';
+import { FiMapPin, FiPhone, FiMail, FiClock, FiFacebook, FiInstagram, FiTwitter, FiLinkedin } from 'react-icons/fi';
 
 export default function Footer() {
-  const { t, language } = useTranslation();
+  const { t, language, dir } = useTranslation();
   
   // Function to get path with locale
   const getLocalizedHref = (path: string): string => {
     if (path === '/') return language === 'en' ? '/' : `/${language}`;
     return language === 'en' ? `/${path}` : `/${language}/${path}`;
   };
-
+  
+  // Current year for copyright
+  const currentYear = new Date().getFullYear();
+  
   return (
-    <footer className="bg-gradient-to-r from-helden-purple-light to-helden-purple-dark text-white">
-      {/* Main Footer */}
+    <footer className="bg-helden-purple-dark text-white">
+      {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand Column */}
-          <div>
-            <h3 className="text-2xl font-bold mb-6">{t('common.brandName')}</h3>
-            <p className="mb-4 text-gray-200">
-              {t('footer.about')}
+          {/* About Column */}
+          <div className={`${dir === 'rtl' ? 'lg:order-4' : ''}`}>
+            <h3 className="text-xl font-bold mb-6">{t('common.brandName')}</h3>
+            <p className="text-gray-300 mb-6 text-sm">
+              {t('footer.aboutShort')}
             </p>
             <div className="flex space-x-4 rtl:space-x-reverse">
-              <a href="https://instagram.com/helden" target="_blank" rel="noopener noreferrer" 
-                className="text-white hover:text-helden-gold transition-colors" 
-                aria-label="Instagram">
-                <FaInstagram size={24} />
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-helden-gold transition-colors" aria-label="Facebook">
+                <FiFacebook className="w-5 h-5" />
               </a>
-              <a href="https://twitter.com/helden" target="_blank" rel="noopener noreferrer" 
-                className="text-white hover:text-helden-gold transition-colors" 
-                aria-label="Twitter">
-                <FaTwitter size={24} />
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-helden-gold transition-colors" aria-label="Instagram">
+                <FiInstagram className="w-5 h-5" />
               </a>
-              <a href="https://tiktok.com/@helden" target="_blank" rel="noopener noreferrer" 
-                className="text-white hover:text-helden-gold transition-colors" 
-                aria-label="TikTok">
-                <FaTiktok size={24} />
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-helden-gold transition-colors" aria-label="Twitter">
+                <FiTwitter className="w-5 h-5" />
               </a>
-              <a href="https://snapchat.com/add/helden" target="_blank" rel="noopener noreferrer" 
-                className="text-white hover:text-helden-gold transition-colors" 
-                aria-label="Snapchat">
-                <FaSnapchatGhost size={24} />
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-helden-gold transition-colors" aria-label="LinkedIn">
+                <FiLinkedin className="w-5 h-5" />
               </a>
             </div>
           </div>
           
-          {/* Categories Column */}
-          <div>
-            <h3 className="font-semibold mb-6 text-lg border-b border-helden-gold-DEFAULT pb-2">
-              {t('footer.categories')}
-            </h3>
+          {/* Quick Links */}
+          <div className={`${dir === 'rtl' ? 'lg:order-3' : ''}`}>
+            <h3 className="text-xl font-bold mb-6">{t('footer.quickLinks')}</h3>
             <ul className="space-y-3">
               <li>
-                <Link href={getLocalizedHref('products/category/abayas')} className="text-gray-200 hover:text-white hover:underline transition">
+                <Link href={getLocalizedHref('')} className="text-gray-300 hover:text-helden-gold transition-colors text-sm">
+                  {t('common.home')}
+                </Link>
+              </li>
+              <li>
+                <Link href={getLocalizedHref('about')} className="text-gray-300 hover:text-helden-gold transition-colors text-sm">
+                  {t('common.about')}
+                </Link>
+              </li>
+              <li>
+                <Link href={getLocalizedHref('products')} className="text-gray-300 hover:text-helden-gold transition-colors text-sm">
+                  {t('common.products')}
+                </Link>
+              </li>
+              <li>
+                <Link href={getLocalizedHref('contact')} className="text-gray-300 hover:text-helden-gold transition-colors text-sm">
+                  {t('common.contact')}
+                </Link>
+              </li>
+              <li>
+                <Link href={getLocalizedHref('terms')} className="text-gray-300 hover:text-helden-gold transition-colors text-sm">
+                  {t('footer.termsConditions')}
+                </Link>
+              </li>
+              <li>
+                <Link href={getLocalizedHref('privacy')} className="text-gray-300 hover:text-helden-gold transition-colors text-sm">
+                  {t('footer.privacyPolicy')}
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Categories */}
+          <div className={`${dir === 'rtl' ? 'lg:order-2' : ''}`}>
+            <h3 className="text-xl font-bold mb-6">{t('common.categories')}</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href={getLocalizedHref('products/category/abayas')} className="text-gray-300 hover:text-helden-gold transition-colors text-sm">
                   {t('categories.abayas')}
                 </Link>
               </li>
               <li>
-                <Link href={getLocalizedHref('products/category/casual')} className="text-gray-200 hover:text-white hover:underline transition">
+                <Link href={getLocalizedHref('products/category/casual')} className="text-gray-300 hover:text-helden-gold transition-colors text-sm">
                   {t('categories.casual')}
                 </Link>
               </li>
               <li>
-                <Link href={getLocalizedHref('products/category/formal')} className="text-gray-200 hover:text-white hover:underline transition">
+                <Link href={getLocalizedHref('products/category/formal')} className="text-gray-300 hover:text-helden-gold transition-colors text-sm">
                   {t('categories.formal')}
                 </Link>
               </li>
               <li>
-                <Link href={getLocalizedHref('products/category/sports')} className="text-gray-200 hover:text-white hover:underline transition">
+                <Link href={getLocalizedHref('products/category/sports')} className="text-gray-300 hover:text-helden-gold transition-colors text-sm">
                   {t('categories.sports')}
                 </Link>
               </li>
               <li>
-                <Link href={getLocalizedHref('products/category/body-shapers')} className="text-gray-200 hover:text-white hover:underline transition">
+                <Link href={getLocalizedHref('products/category/body-shapers')} className="text-gray-300 hover:text-helden-gold transition-colors text-sm">
                   {t('categories.bodyShaper')}
                 </Link>
               </li>
             </ul>
           </div>
           
-          {/* Customer Service Column */}
-          <div>
-            <h3 className="font-semibold mb-6 text-lg border-b border-helden-gold-DEFAULT pb-2">
-              {t('footer.customerService')}
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href={getLocalizedHref('tracking')} className="text-gray-200 hover:text-white hover:underline transition">
-                  {t('footer.trackOrder')}
-                </Link>
+          {/* Contact Information */}
+          <div className={`${dir === 'rtl' ? 'lg:order-1' : ''}`}>
+            <h3 className="text-xl font-bold mb-6">{t('contact.getInTouch')}</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start">
+                <FiMapPin className="w-5 h-5 text-helden-gold shrink-0 mt-0.5" />
+                <span className="ml-3 rtl:mr-3 rtl:ml-0 text-gray-300 text-sm">{t('contact.address.content')}</span>
               </li>
-              <li>
-                <Link href={getLocalizedHref('returns')} className="text-gray-200 hover:text-white hover:underline transition">
-                  {t('footer.returns')}
-                </Link>
+              <li className="flex items-center">
+                <FiPhone className="w-5 h-5 text-helden-gold shrink-0" />
+                <span className="ml-3 rtl:mr-3 rtl:ml-0 text-gray-300 text-sm">{t('contact.phone.content')}</span>
               </li>
-              <li>
-                <Link href={getLocalizedHref('shipping')} className="text-gray-200 hover:text-white hover:underline transition">
-                  {t('footer.shipping')}
-                </Link>
+              <li className="flex items-center">
+                <FiMail className="w-5 h-5 text-helden-gold shrink-0" />
+                <span className="ml-3 rtl:mr-3 rtl:ml-0 text-gray-300 text-sm">{t('contact.email.content')}</span>
               </li>
-              <li>
-                <Link href={getLocalizedHref('faq')} className="text-gray-200 hover:text-white hover:underline transition">
-                  {t('footer.faq')}
-                </Link>
-              </li>
-              <li>
-                <Link href={getLocalizedHref('contact')} className="text-gray-200 hover:text-white hover:underline transition">
-                  {t('footer.contactUs')}
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          {/* Newsletter Column */}
-          <div>
-            <h3 className="font-semibold mb-6 text-lg border-b border-helden-gold-DEFAULT pb-2">
-              {t('footer.newsletter')}
-            </h3>
-            <p className="mb-4 text-gray-200">
-              {t('footer.newsletterText')}
-            </p>
-            <form className="flex flex-col space-y-2">
-              <input
-                type="email"
-                placeholder={t('footer.emailPlaceholder')}
-                className="px-4 py-2 rounded-md bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-helden-gold"
-              />
-              <button type="submit" className="bg-helden-gold hover:bg-helden-gold-dark text-helden-purple-dark font-medium py-2 px-4 rounded-md transition-colors">
-                {t('footer.subscribe')}
-              </button>
-            </form>
-          </div>
-          
-          {/* Quick Links Column */}
-          <div>
-            <h3 className="font-semibold mb-6 text-lg border-b border-helden-gold-DEFAULT pb-2">
-              {t('footer.quickLinks')}
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href={getLocalizedHref('')} className="text-gray-200 hover:text-white hover:underline transition">
-                  {t('common.home')}
-                </Link>
-              </li>
-              <li>
-                <Link href={getLocalizedHref('about')} className="text-gray-200 hover:text-white hover:underline transition">
-                  {t('footer.aboutUs')}
-                </Link>
-              </li>
-              <li>
-                <Link href={getLocalizedHref('terms')} className="text-gray-200 hover:text-white hover:underline transition">
-                  {t('footer.termsConditions')}
-                </Link>
-              </li>
-              <li>
-                <Link href={getLocalizedHref('privacy')} className="text-gray-200 hover:text-white hover:underline transition">
-                  {t('footer.privacyPolicy')}
-                </Link>
+              <li className="flex items-start">
+                <FiClock className="w-5 h-5 text-helden-gold shrink-0 mt-0.5" />
+                <div className="ml-3 rtl:mr-3 rtl:ml-0 text-gray-300 text-sm">
+                  <p>{t('footer.workingHours.weekdays')}</p>
+                  <p>{t('footer.workingHours.weekend')}</p>
+                </div>
               </li>
             </ul>
           </div>
         </div>
       </div>
       
-      {/* Payment Methods Section */}
-      <div className="border-t border-white/10">
+      {/* Payment Methods */}
+      <div className="border-t border-gray-700">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <h4 className="text-sm font-medium mb-2">{t('footer.paymentMethods')}</h4>
-              <div className="flex flex-wrap gap-2">
-                <div className="bg-white rounded p-1">
-                  <Image src="/images/payment/visa.svg" alt="Visa" width={30} height={20} />
-                </div>
-                <div className="bg-white rounded p-1">
-                  <Image src="/images/payment/mastercard.svg" alt="Mastercard" width={30} height={20} />
-                </div>
-                <div className="bg-white rounded p-1">
-                  <Image src="/images/payment/apple-pay.svg" alt="Apple Pay" width={30} height={20} />
-                </div>
-                <div className="bg-white rounded p-1">
-                  <Image src="/images/payment/mada.svg" alt="Mada" width={30} height={20} />
-                </div>
-                <div className="bg-white rounded p-1">
-                  <Image src="/images/payment/tabby.png" alt="Tabby" width={30} height={20} />
-                </div>
-                <div className="bg-white rounded p-1">
-                  <Image src="/images/payment/tamara.png" alt="Tamara" width={30} height={20} />
-                </div>
-                <div className="bg-white rounded p-1">
-                  <Image src="/images/payment/cod.png" alt="Cash on Delivery" width={30} height={20} />
-                </div>
+              <p className="text-gray-400 text-sm">
+                {t('footer.paymentMethods')}
+              </p>
+              <div className="flex mt-2 space-x-3 rtl:space-x-reverse">
+                <Image src="/images/payment/visa.png" alt="Visa" width={40} height={25} className="h-8 w-auto object-contain" />
+                <Image src="/images/payment/mastercard.png" alt="Mastercard" width={40} height={25} className="h-8 w-auto object-contain" />
+                <Image src="/images/payment/mada.png" alt="Mada" width={40} height={25} className="h-8 w-auto object-contain" />
+                <Image src="/images/payment/apple-pay.png" alt="Apple Pay" width={40} height={25} className="h-8 w-auto object-contain" />
               </div>
             </div>
-            <div className="flex flex-col md:flex-row items-center md:space-x-8 rtl:space-x-reverse">
-              <Link href={getLocalizedHref('privacy')} className="text-gray-200 hover:text-white hover:underline transition mb-2 md:mb-0">
-                {t('footer.privacyPolicy')}
-              </Link>
-              <Link href={getLocalizedHref('terms')} className="text-gray-200 hover:text-white hover:underline transition mb-2 md:mb-0">
-                {t('footer.termsConditions')}
-              </Link>
+            <div>
+              <p className="text-gray-400 text-sm">
+                {t('footer.deliveryPartners')}
+              </p>
+              <div className="flex mt-2 space-x-3 rtl:space-x-reverse">
+                <Image src="/images/shipping/aramex.png" alt="Aramex" width={40} height={25} className="h-8 w-auto object-contain" />
+                <Image src="/images/shipping/dhl.png" alt="DHL" width={40} height={25} className="h-8 w-auto object-contain" />
+                <Image src="/images/shipping/smsa.png" alt="SMSA" width={40} height={25} className="h-8 w-auto object-contain" />
+              </div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Copyright Section */}
+      {/* Copyright */}
       <div className="bg-helden-purple-darker py-4">
-        <div className="container mx-auto px-4 text-center text-gray-300 text-sm">
-          <p>© {new Date().getFullYear()} {t('common.brandName')}. {t('footer.allRightsReserved')}</p>
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm text-center md:text-left">
+              &copy; {currentYear} {t('common.brandName')}. {t('footer.rightsReserved')}
+            </p>
+            <div className="mt-4 md:mt-0">
+              <Link 
+                href={getLocalizedHref('terms')} 
+                className="text-gray-400 hover:text-white text-sm px-3 border-r border-gray-700 last:border-0"
+              >
+                {t('footer.termsConditions')}
+              </Link>
+              <Link 
+                href={getLocalizedHref('privacy')} 
+                className="text-gray-400 hover:text-white text-sm px-3 border-r border-gray-700 last:border-0"
+              >
+                {t('footer.privacyPolicy')}
+              </Link>
+              <Link 
+                href={getLocalizedHref('faq')} 
+                className="text-gray-400 hover:text-white text-sm px-3"
+              >
+                {t('footer.faq')}
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
-      
-      <div className="pt-8 mt-8 border-t border-gray-700 text-center">
-        <p className="text-gray-400 text-sm">
-          {t('footer.copyright')}
-        </p>
       </div>
     </footer>
   );

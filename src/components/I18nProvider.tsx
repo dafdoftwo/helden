@@ -1,13 +1,21 @@
 "use client";
 
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import enTranslations from '@/i18n/locales/en.json';
-import arTranslations from '@/i18n/locales/ar.json';
+import enTranslations from '@/i18n/translations/en.json';
+import arTranslations from '@/i18n/translations/ar.json';
+
+// Define translations object type
+type TranslationObject = {
+  [key: string]: string | TranslationObject;
+};
 
 // Define translations object
-const translations = {
-  en: enTranslations,
-  ar: arTranslations
+const translations: {
+  en: TranslationObject;
+  ar: TranslationObject;
+} = {
+  en: enTranslations as TranslationObject,
+  ar: arTranslations as TranslationObject
 };
 
 // Define the shape of our context
@@ -90,37 +98,60 @@ const I18nProvider: React.FC<{
     }
   };
 
-  // Enhanced translation function
+  // Improved translation function
   const t = (key: string, replacements?: Record<string, string>): string => {
-    const keys = key.split('.');
-    let value: any = translations[language];
+    // --- DEBUG LOG START ---
+    console.log(`[i18n] Attempting to translate key: "${key}" for language: "${language}"`);
+    // --- DEBUG LOG END ---
 
-    // Navigate through the translation object
-    for (const k of keys) {
-      if (value && typeof value === 'object' && k in value) {
-        value = value[k];
-      } else {
-        return key; // Return the key if translation is missing
-      }
+    if (!key || typeof key !== 'string') {
+      // --- DEBUG LOG START ---
+      console.warn(`[i18n] Invalid key received:`, key);
+      // --- DEBUG LOG END ---
+      return key || '';
     }
-
-    // If we have a string value, process any replacements
-    if (typeof value === 'string') {
-      if (replacements) {
-        // Replace any {{variable}} in the string with its value
-        let result = value;
-        
-        for (const [varKey, varValue] of Object.entries(replacements)) {
-          const pattern = new RegExp(`{{${varKey}}}`, 'g');
-          result = result.replace(pattern, varValue);
+    
+    try {
+      const keys = key.split('.');
+      let current: any = translations[language];
+      
+      // Navigate through nested objects
+      for (const k of keys) {
+        if (current === undefined || current === null || typeof current !== 'object') { // Added type check
+          // --- DEBUG LOG START ---
+          console.warn(`[i18n] Key part "${k}" not found or invalid structure in "${key}" for language "${language}". Current structure:`, current);
+          // --- DEBUG LOG END ---
+          return key; // Return the original key as fallback
         }
         
+        current = current[k];
+      }
+      
+      // Check if we got a valid string
+      if (typeof current === 'string') {
+        let result = current;
+        // Apply replacements
+        if (replacements) {
+          for (const [replaceKey, replaceValue] of Object.entries(replacements)) {
+            result = result.replace(new RegExp(`{{${replaceKey}}}`, 'g'), replaceValue);
+          }
+        }
+        // --- DEBUG LOG START ---
+        // console.log(`[i18n] Successfully translated "${key}" to: "${result}"`); // Uncomment for successful logs
+        // --- DEBUG LOG END ---
         return result;
       }
-      return value;
+      
+      // --- DEBUG LOG START ---
+      console.warn(`[i18n] Translation key "${key}" resolved, but is not a string for language "${language}". Value:`, current);
+       // --- DEBUG LOG END ---
+      return key; // Return the original key as fallback
+    } catch (error) {
+      // --- DEBUG LOG START ---
+      console.error(`[i18n] Error translating key "${key}":`, error);
+      // --- DEBUG LOG END ---
+      return key; // Return the original key as fallback in case of any error
     }
-
-    return key; // Return the key if translation is not a string
   };
 
   return (

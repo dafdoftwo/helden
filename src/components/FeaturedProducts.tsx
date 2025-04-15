@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslation } from '@/i18n';
+import { useTranslation } from '@/i18n/client';
 import { motion } from 'framer-motion';
 import { FiShoppingBag, FiHeart, FiEye } from 'react-icons/fi';
 
@@ -11,7 +11,7 @@ import { FiShoppingBag, FiHeart, FiEye } from 'react-icons/fi';
 const featuredProducts = [
   {
     id: 'abaya-01',
-    name: 'product.items.elegant_abaya.name',
+    nameKey: 'product.items.elegant_abaya.name',
     price: 599,
     image: '/images/Abayas/SaudiAbayas.jpg',
     category: 'abayas',
@@ -25,7 +25,7 @@ const featuredProducts = [
   },
   {
     id: 'casual-02',
-    name: 'product.items.casual_clothes.name',
+    nameKey: 'product.items.casual_clothes.name',
     price: 450,
     image: '/images/casual_clothes/Saudi_casual_clothes_1.jpg',
     category: 'casual',
@@ -39,7 +39,7 @@ const featuredProducts = [
   },
   {
     id: 'formal-03',
-    name: 'product.items.formal_wear.name',
+    nameKey: 'product.items.formal_wear.name',
     price: 680,
     image: '/images/formal_wear/formal_wear_1.jpg',
     category: 'formal',
@@ -53,7 +53,7 @@ const featuredProducts = [
   },
   {
     id: 'sports-04',
-    name: 'product.items.active_sports.name',
+    nameKey: 'product.items.active_sports.name',
     price: 520,
     image: '/images/Saudi-women-sportswear/Saudi_women_sportswear.jpg',
     category: 'sports',
@@ -67,7 +67,7 @@ const featuredProducts = [
   },
   {
     id: 'shaper-05',
-    name: 'product.items.contour_body_shaper.name',
+    nameKey: 'product.items.contour_body_shaper.name',
     price: 320,
     image: '/images/women_body_shapers/women_body_shapers.jpg',
     category: 'body-shapers',
@@ -81,7 +81,7 @@ const featuredProducts = [
   },
   {
     id: 'abaya-06',
-    name: 'product.items.luxury_gold_abaya.name',
+    nameKey: 'product.items.luxury_gold_abaya.name',
     price: 890,
     image: '/images/Abayas/Saudi_Abayas2.jpg',
     category: 'abayas',
@@ -160,7 +160,7 @@ export default function FeaturedProducts() {
                 <Link href={getLocalizedHref(`products/${product.id}`)}>
                   <Image
                     src={product.image}
-                    alt={t(product.name)}
+                    alt={t(product.nameKey)}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -228,7 +228,7 @@ export default function FeaturedProducts() {
                 
                 {/* Product Name */}
                 <Link href={getLocalizedHref(`products/${product.id}`)} className="block">
-                  <h3 className="text-lg font-semibold text-gray-800 hover:text-helden-purple transition-colors mb-2 line-clamp-2">{t(product.name)}</h3>
+                  <h3 className="text-lg font-semibold text-gray-800 hover:text-helden-purple transition-colors mb-2 line-clamp-2">{t(product.nameKey)}</h3>
                 </Link>
                 
                 {/* Ratings */}
@@ -304,14 +304,14 @@ export default function FeaturedProducts() {
               <div className="relative h-96">
                 <Image
                   src={featuredProducts.find(p => p.id === quickViewProduct)?.image || ''}
-                  alt={t(featuredProducts.find(p => p.id === quickViewProduct)?.name || '')}
+                  alt={t(featuredProducts.find(p => p.id === quickViewProduct)?.nameKey || '')}
                   fill
                   className="object-cover rounded-md"
                 />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                  {t(featuredProducts.find(p => p.id === quickViewProduct)?.name || '')}
+                  {t(featuredProducts.find(p => p.id === quickViewProduct)?.nameKey || '')}
                 </h3>
                 <div className="flex items-center mb-4">
                   <div className="flex text-helden-gold">

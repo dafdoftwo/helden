@@ -5,30 +5,30 @@ import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaTimes, FaTrash, FaPlus, FaMinus, FaShoppingCart, FaArrowRight } from 'react-icons/fa';
-import { useTranslation } from '../i18n';
-import { useCart } from '../context/CartContext';
+import { useTranslation } from '@/i18n';
+import { useCart } from '@/contexts/CartContext';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
 const CartSidebar = () => {
   const { t } = useTranslation();
   const { 
-    items, 
-    removeItem, 
-    updateQuantity, 
-    itemCount, 
-    subtotal, 
-    isCartOpen, 
-    setIsCartOpen,
+    cart,
+    removeFromCart,
+    updateItemQuantity,
+    isOpen,
+    setIsOpen,
     clearCart
   } = useCart();
   
   const pathname = usePathname();
   const locale = pathname.split('/')[1] || 'en';
 
+  const itemCount = cart.items ? cart.items.reduce((sum, item) => sum + item.quantity, 0) : 0;
+
   return (
-    <Transition.Root show={isCartOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-50" onClose={() => setIsCartOpen(false)}>
+    <Transition.Root show={isOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={() => setIsOpen(false)}>
         <Transition.Child
           as={Fragment}
           enter="ease-in-out duration-500"
@@ -65,7 +65,7 @@ const CartSidebar = () => {
                           <button
                             type="button"
                             className="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
-                            onClick={() => setIsCartOpen(false)}
+                            onClick={() => setIsOpen(false)}
                           >
                             <span className="absolute -inset-0.5" />
                             <span className="sr-only">{t('cart.close')}</span>
@@ -88,7 +88,7 @@ const CartSidebar = () => {
                               <button
                                 type="button"
                                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-helden-purple hover:bg-helden-purple-dark focus:outline-none"
-                                onClick={() => setIsCartOpen(false)}
+                                onClick={() => setIsOpen(false)}
                               >
                                 {t('cart.continueShopping')}
                               </button>
@@ -97,9 +97,9 @@ const CartSidebar = () => {
                         ) : (
                           <div className="flow-root">
                             <ul role="list" className="-my-6 divide-y divide-gray-200">
-                              {items.map((item) => (
+                              {cart.items.map((item, index) => (
                                 <motion.li
-                                  key={`${item.productId}-${item.color}-${item.size}`}
+                                  key={index}
                                   className="flex py-6"
                                   layout
                                   initial={{ opacity: 0, y: 20 }}
@@ -109,8 +109,8 @@ const CartSidebar = () => {
                                 >
                                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                     <Image
-                                      src={item.image}
-                                      alt={item.name}
+                                      src={item.product.images ? item.product.images[0] : '/placeholder.png'}
+                                      alt={item.product.name}
                                       width={96}
                                       height={96}
                                       className="h-full w-full object-cover object-center"
@@ -122,14 +122,14 @@ const CartSidebar = () => {
                                       <div className="flex justify-between text-base font-medium text-gray-900">
                                         <h3>
                                           <Link 
-                                            href={`/${locale}/products/${item.productId}`}
+                                            href={`/${locale}/products/${item.product.id}`}
                                             className="hover:text-helden-purple"
-                                            onClick={() => setIsCartOpen(false)}
+                                            onClick={() => setIsOpen(false)}
                                           >
-                                            {item.name}
+                                            {item.product.name}
                                           </Link>
                                         </h3>
-                                        <p className="ml-4">{item.price.toFixed(2)} SAR</p>
+                                        <p className="ml-4">{(item.product.price * item.quantity).toFixed(2)} SAR</p>
                                       </div>
                                       <div className="mt-1 flex text-sm">
                                         {item.color && (
@@ -147,7 +147,7 @@ const CartSidebar = () => {
                                     <div className="flex flex-1 items-end justify-between text-sm">
                                       <div className="flex items-center border rounded-md">
                                         <button
-                                          onClick={() => updateQuantity(item.productId, Math.max(1, item.quantity - 1), item.color, item.size)}
+                                          onClick={() => updateItemQuantity(index, item.quantity - 1)}
                                           className="p-1 px-2 text-gray-500 hover:text-gray-700"
                                           disabled={item.quantity <= 1}
                                         >
@@ -155,7 +155,7 @@ const CartSidebar = () => {
                                         </button>
                                         <span className="px-2 text-gray-900">{item.quantity}</span>
                                         <button
-                                          onClick={() => updateQuantity(item.productId, item.quantity + 1, item.color, item.size)}
+                                          onClick={() => updateItemQuantity(index, item.quantity + 1)}
                                           className="p-1 px-2 text-gray-500 hover:text-gray-700"
                                         >
                                           <FaPlus className="h-3 w-3" />
@@ -166,7 +166,7 @@ const CartSidebar = () => {
                                         <button
                                           type="button"
                                           className="font-medium text-helden-purple hover:text-helden-purple-dark flex items-center"
-                                          onClick={() => removeItem(item.productId, item.color, item.size)}
+                                          onClick={() => removeFromCart(index)}
                                         >
                                           <FaTrash className="h-3 w-3 mr-1" />
                                           {t('cart.remove')}
@@ -178,12 +178,12 @@ const CartSidebar = () => {
                               ))}
                             </ul>
                             
-                            {items.length > 0 && (
+                            {cart.items.length > 0 && (
                               <div className="mt-4 flex justify-end">
                                 <button
                                   type="button"
                                   className="text-sm font-medium text-helden-purple hover:text-helden-purple-dark flex items-center"
-                                  onClick={() => clearCart()}
+                                  onClick={clearCart}
                                 >
                                   <FaTrash className="h-3 w-3 mr-1" />
                                   {t('cart.clearCart')}
@@ -199,27 +199,28 @@ const CartSidebar = () => {
                       <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                         <div className="flex justify-between text-base font-medium text-gray-900">
                           <p>{t('cart.subtotal')}</p>
-                          <p>{subtotal.toFixed(2)} SAR</p>
+                          <p>{cart.subtotal.toFixed(2)} SAR</p>
                         </div>
-                        <p className="mt-0.5 text-sm text-gray-500">{t('cart.shippingCalculated')}</p>
+                        <p className="mt-0.5 text-sm text-gray-500">{t('cart.shippingTaxesCalculated')}</p>
                         
                         <div className="mt-6">
                           <Link
                             href={`/${locale}/checkout`}
                             className="flex items-center justify-center rounded-md border border-transparent bg-helden-purple px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-helden-purple-dark"
-                            onClick={() => setIsCartOpen(false)}
+                            onClick={() => setIsOpen(false)}
                           >
                             {t('cart.checkout')}
-                            <FaArrowRight className="ml-2 h-4 w-4" />
+                            <FaArrowRight className="ml-2" />
                           </Link>
                         </div>
                         
                         <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                           <p>
+                            {t('cart.or')}{' '}
                             <button
                               type="button"
                               className="font-medium text-helden-purple hover:text-helden-purple-dark"
-                              onClick={() => setIsCartOpen(false)}
+                              onClick={() => setIsOpen(false)}
                             >
                               {t('cart.continueShopping')}
                               <span aria-hidden="true"> &rarr;</span>

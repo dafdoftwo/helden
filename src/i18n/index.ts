@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import enTranslations from './locales/en.json';
-import arTranslations from './locales/ar.json';
+import enTranslations from './translations/en.json';
+import arTranslations from './translations/ar.json';
 
 export type Language = 'en' | 'ar';
 
@@ -38,7 +38,7 @@ export const translate = (language: Language, key: string, replacements?: Record
     // Handle replacements if provided
     if (replacements) {
       return Object.entries(replacements).reduce((str, [key, value]) => {
-        return str.replace(new RegExp(`{${key}}`, 'g'), String(value));
+        return str.replace(new RegExp(`{{${key}}}`, 'g'), String(value));
       }, current);
     }
     return current;

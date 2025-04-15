@@ -74,10 +74,11 @@
   },
   "categories": {
     "abayas": "Abayas",
-    "casual": "Casual Clothes",
-    "formal": "Formal Wear",
-    "sports": "Sports Wear",
-    "bodyShaper": "Body Shapers"
+    "casual": "Casual Wear",
+    "formal": "Formal Clothes",
+    "sports": "Sportswear",
+    "bodyShaper": "Body Shapers",
+    "body-shapers": "Body Shapers"
   },
   "products": {
     "abaya": "Luxury Embroidered Abaya",
@@ -86,7 +87,7 @@
     "sports": "Modern Sports Outfit",
     "title": "Products",
     "all": "All Products",
-    "new": "New Arrivals",
+    "new": "New",
     "sale": "Sale",
     "filters": {
       "title": "Filters",
@@ -120,15 +121,30 @@
     "viewImage": "View image",
     "previousImage": "Previous image",
     "nextImage": "Next image",
-    "clickToZoom": "Click to zoom"
+    "clickToZoom": "Click to zoom",
+    "reviews": "Reviews"
   },
   "home": {
     "hero": {
-      "title": "HELDEN",
-      "subtitle": "Premium Women's Fashion in Saudi Arabia"
+      "exclusive": "Exclusive Collection",
+      "title": "Elegant Fashion for the Modern Saudi Woman",
+      "subtitle": "Discover our premium selection of clothing that combines tradition with contemporary style"
+    },
+    "welcome": {
+      "title": "Welcome to HELDEN",
+      "text": "HELDEN is Saudi Arabia's premier destination for women's fashion. We curate collections that honor cultural heritage while embracing modern elegance, helping you express your unique style with confidence."
     },
     "collections": "Our Collections",
-    "featuredProducts": "Featured Products",
+    "collectionsSubtitle": "Explore our carefully curated collections designed for every occasion",
+    "newArrivals": {
+      "title": "New Season Arrivals",
+      "subtitle": "Be the first to discover our latest designs and collections",
+      "cta": "Explore New Arrivals"
+    },
+    "featuredProducts": {
+      "title": "Featured Products",
+      "viewAll": "View All Products"
+    },
     "trust": {
       "delivery": {
         "title": "Fast Delivery",
@@ -153,7 +169,6 @@
     "featuredTitle": "Featured Products",
     "viewAll": "View All",
     "featuredCollections": "Featured Collections",
-    "newArrivals": "New Arrivals",
     "trendingNow": "Trending Now",
     "shopCollection": "Shop Collection"
   },
@@ -275,8 +290,7 @@
     "viewDetails": "View Details",
     "items": {
       "elegant_abaya": {
-        "name": "Elegant Abaya",
-        "description": "A luxurious elegant abaya with intricate embroidery and premium fabric."
+        "name": "Elegant Abaya"
       },
       "casual_abaya": {
         "name": "Casual Abaya",
@@ -307,24 +321,19 @@
         "description": "Contemporary hijab design with premium breathable fabric."
       },
       "active_sports": {
-        "name": "Active Sports Collection",
-        "description": "High-performance sportswear designed for comfort and movement."
+        "name": "Active Sports"
       },
       "casual_clothes": {
-        "name": "Modern Casual Ensemble",
-        "description": "Trendy and comfortable casual wear for everyday style."
+        "name": "Casual Clothes"
       },
       "formal_wear": {
-        "name": "Elegant Formal Wear",
-        "description": "Sophisticated formal attire for special occasions and events."
+        "name": "Formal Wear"
       },
       "contour_body_shaper": {
-        "name": "Contour Body Shaper",
-        "description": "Premium body shaper for a smooth silhouette and comfortable support."
+        "name": "Contour Body Shaper"
       },
       "luxury_gold_abaya": {
-        "name": "Luxury Gold Detail Abaya",
-        "description": "Exquisite abaya with elegant gold embellishments and premium fabric."
+        "name": "Luxury Gold Abaya"
       }
     }
   },
@@ -639,5 +648,18 @@
     "helpful": "Helpful",
     "reportAbuse": "Report",
     "noReviews": "No reviews yet. Be the first to review this product!"
+  },
+  "promotions": {
+    "limitedOffer": "Limited Time Offer",
+    "discount": "Use code for 15% off your first order:"
+  },
+  "testimonials": {
+    "title": "What Our Customers Say",
+    "quotes": {
+      "noor": "Working in a corporate environment, I need clothing that is both professional and stylish. HELDEN's formal wear collection is perfect - modest yet modern, and always garnering compliments."
+    },
+    "roles": {
+      "professional": "Professional"
+    }
   }
 } 

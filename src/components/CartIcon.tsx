@@ -1,20 +1,20 @@
 "use client";
 
 import React from 'react';
-import { useCart } from '@/context/CartContext';
+import { useCart } from '@/contexts/CartContext';
 import { useTranslation } from '@/i18n';
 
 const CartIcon: React.FC = () => {
-  const { items, setIsCartOpen } = useCart();
+  const { cart, setIsOpen } = useCart();
   const { t } = useTranslation();
   
-  // Calculate the total number of items in the cart
-  const itemCount = items ? items.reduce((total, item) => total + item.quantity, 0) : 0;
+  // Calculate the total number of items in the cart from cart.items
+  const itemCount = cart.items ? cart.items.reduce((total, item) => total + item.quantity, 0) : 0;
 
   return (
     <button
       className="relative p-2 text-gray-600 hover:text-helden-purple-dark transition-colors"
-      onClick={() => setIsCartOpen(true)}
+      onClick={() => setIsOpen(true)}
       aria-label={t('common.cart')}
     >
       <svg

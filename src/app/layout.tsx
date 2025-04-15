@@ -1,10 +1,12 @@
 import { Inter } from 'next/font/google';
+import { Metadata } from 'next';
+import './globals.css';
+import I18nProvider from '@/components/I18nProvider';
+import { Providers } from './providers';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CartSidebar from '@/components/CartSidebar';
-import { Providers } from './providers';
-import { Metadata } from 'next';
-import './globals.css';
+import '@/lib/supabase';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -50,25 +52,23 @@ export const dynamic = 'force-dynamic';
 
 export default function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: { locale?: string };
 }) {
-  const locale = params.locale || 'en';
-  
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <html>
       <head />
       <body className={inter.className}>
-        <Providers>
-          <Header />
-          <CartSidebar />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
-        </Providers>
+        <I18nProvider>
+          <Providers>
+            <Header />
+            <CartSidebar />
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <Footer />
+          </Providers>
+        </I18nProvider>
       </body>
     </html>
   );
