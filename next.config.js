@@ -1,10 +1,9 @@
 /** @type {import('next').NextConfig} */
-import { createSecureHeaders } from "next-secure-headers";
+const { createSecureHeaders } = require('next-secure-headers');
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove static export mode to use i18n
-  // output: 'export',
-  // distDir: 'out',
+  // Static export is disabled to allow i18n
   images: {
     domains: ["helden.vip", "helden-store.vercel.app", "images.unsplash.com", "localhost"],
     remotePatterns: [
@@ -80,4 +79,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig; 
+module.exports = nextConfig; 
