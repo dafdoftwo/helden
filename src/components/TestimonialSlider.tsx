@@ -7,12 +7,14 @@ import { FaStar, FaQuoteLeft } from 'react-icons/fa';
 import { useTranslation } from '../i18n';
 
 // Testimonial data
+const fallbackAvatar = '/images/avatar-placeholder.jpg';
+
 const testimonials = [
   {
     id: 1,
     name: 'Sarah Al-Qahtani',
     role: 'testimonials.roles.loyalCustomer',
-    avatar: '/images/avatar1.jpg',
+    avatar: fallbackAvatar,
     quote: 'testimonials.quotes.sarah',
     rating: 5,
     location: 'Riyadh'
@@ -21,7 +23,7 @@ const testimonials = [
     id: 2,
     name: 'Fatima Hassan',
     role: 'testimonials.roles.fashionBlogger',
-    avatar: '/images/avatar2.jpg',
+    avatar: fallbackAvatar,
     quote: 'testimonials.quotes.fatima',
     rating: 5,
     location: 'Jeddah'
@@ -30,7 +32,7 @@ const testimonials = [
     id: 3,
     name: 'Noor Abdullah',
     role: 'testimonials.roles.professional',
-    avatar: '/images/avatar3.jpg',
+    avatar: fallbackAvatar,
     quote: 'testimonials.quotes.noor',
     rating: 4,
     location: 'Dammam'
@@ -39,15 +41,12 @@ const testimonials = [
     id: 4,
     name: 'Amina Mohammed',
     role: 'testimonials.roles.student',
-    avatar: '/images/avatar4.jpg',
+    avatar: fallbackAvatar,
     quote: 'testimonials.quotes.amina',
     rating: 5,
     location: 'Mecca'
   }
 ];
-
-// Fallback avatar image
-const fallbackAvatar = '/images/avatar-placeholder.jpg';
 
 // Type for decorative dots
 type Dot = {

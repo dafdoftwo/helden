@@ -33,6 +33,7 @@
     "searchPlaceholder": "Search for products...",
     "allCategories": "All Categories",
     "logo": "HELDEN",
+    "brandName": "HELDEN Store",
     "products": "Products",
     "about": "About",
     "men": "Men",
@@ -70,7 +71,10 @@
     "new": "New",
     "sale": "Sale",
     "left": "left",
-    "submitting": "Submitting..."
+    "submitting": "Submitting...",
+    "openMenu": "Open Menu",
+    "closeMenu": "Close Menu",
+    "goBack": "Go Back"
   },
   "categories": {
     "abayas": "Abayas",
@@ -177,6 +181,7 @@
     "copyright": "© 2023 HELDEN. All rights reserved.",
     "title": "HELDEN Store",
     "description": "Premium quality clothing and accessories.",
+    "aboutShort": "Helden offers premium women's clothing with a focus on quality and style. We provide the latest fashion trends for the modern Saudi woman.",
     "links": {
       "shop": "Shop",
       "about": "About",
@@ -199,6 +204,10 @@
       "phone": "Phone",
       "address": "Address"
     },
+    "workingHours": {
+      "weekdays": "Sun - Thu: 9 AM - 6 PM",
+      "weekend": "Fri - Sat: Closed"
+    },
     "shipping": "Shipping & Returns",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
@@ -215,10 +224,13 @@
     "trackOrder": "Track Your Order",
     "contactUs": "Contact Us",
     "allRightsReserved": "All Rights Reserved",
+    "rightsReserved": "All Rights Reserved",
     "paymentMethods": "Payment Methods",
     "privacyPolicy": "Privacy Policy",
     "termsConditions": "Terms & Conditions",
-    "emailPlaceholder": "Enter your email"
+    "emailPlaceholder": "Enter your email",
+    "quickLinks": "Quick Links",
+    "deliveryPartners": "Delivery Partners"
   },
   "error": {
     "404": {
@@ -340,6 +352,7 @@
   "cart": {
     "title": "Your Shopping Cart",
     "empty": "Your cart is empty",
+    "emptyMessage": "Looks like you haven't added anything to your cart yet.",
     "startShopping": "Start Shopping",
     "subtotal": "Subtotal",
     "shipping": "Shipping",
@@ -349,6 +362,7 @@
     "clear": "Clear Cart",
     "update": "Update Cart",
     "remove": "Remove",
+    "close": "Close Cart",
     "continueShopping": "Continue Shopping",
     "itemCount": "{{count}} item",
     "itemCount_plural": "{{count}} items",
@@ -656,10 +670,12 @@
   "testimonials": {
     "title": "What Our Customers Say",
     "quotes": {
-      "noor": "Working in a corporate environment, I need clothing that is both professional and stylish. HELDEN's formal wear collection is perfect - modest yet modern, and always garnering compliments."
+      "noor": "Working in a corporate environment, I need clothing that is both professional and stylish. HELDEN's formal wear collection is perfect - modest yet modern, and always garnering compliments.",
+      "sarah": "Amazing quality and fast delivery!"
     },
     "roles": {
-      "professional": "Professional"
+      "professional": "Professional",
+      "loyalCustomer": "Loyal Customer"
     }
   }
-} 
+}

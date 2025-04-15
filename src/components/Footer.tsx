@@ -2,9 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useTranslation } from '@/i18n';
 import { FiMapPin, FiPhone, FiMail, FiClock, FiFacebook, FiInstagram, FiTwitter, FiLinkedin } from 'react-icons/fi';
+import { FaCcVisa, FaCcMastercard, FaCcApplePay, FaDhl, FaTruck } from "react-icons/fa";
+import { SiUps } from "react-icons/si";
+import { BsCreditCard2FrontFill } from "react-icons/bs";
 
 export default function Footer() {
   const { t, language, dir } = useTranslation();
@@ -116,19 +118,19 @@ export default function Footer() {
           
           {/* Contact Information */}
           <div className={`${dir === 'rtl' ? 'lg:order-1' : ''}`}>
-            <h3 className="text-xl font-bold mb-6">{t('contact.getInTouch')}</h3>
+            <h3 className="text-xl font-bold mb-6">{t('footer.contact.title')}</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <FiMapPin className="w-5 h-5 text-helden-gold shrink-0 mt-0.5" />
-                <span className="ml-3 rtl:mr-3 rtl:ml-0 text-gray-300 text-sm">{t('contact.address.content')}</span>
+                <span className="ml-3 rtl:mr-3 rtl:ml-0 text-gray-300 text-sm">{t('footer.contact.address')}</span>
               </li>
               <li className="flex items-center">
                 <FiPhone className="w-5 h-5 text-helden-gold shrink-0" />
-                <span className="ml-3 rtl:mr-3 rtl:ml-0 text-gray-300 text-sm">{t('contact.phone.content')}</span>
+                <span className="ml-3 rtl:mr-3 rtl:ml-0 text-gray-300 text-sm">{t('footer.contact.phone')}</span>
               </li>
               <li className="flex items-center">
                 <FiMail className="w-5 h-5 text-helden-gold shrink-0" />
-                <span className="ml-3 rtl:mr-3 rtl:ml-0 text-gray-300 text-sm">{t('contact.email.content')}</span>
+                <span className="ml-3 rtl:mr-3 rtl:ml-0 text-gray-300 text-sm">{t('footer.contact.email')}</span>
               </li>
               <li className="flex items-start">
                 <FiClock className="w-5 h-5 text-helden-gold shrink-0 mt-0.5" />
@@ -142,29 +144,31 @@ export default function Footer() {
         </div>
       </div>
       
-      {/* Payment Methods */}
+      {/* Payment Methods & Delivery Partners Combined */}
       <div className="border-t border-gray-700">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p className="text-gray-400 text-sm">
+            {/* Payment Methods */}
+            <div className="mb-6 md:mb-0">
+              <p className="text-gray-400 text-sm mb-3">
                 {t('footer.paymentMethods')}
               </p>
-              <div className="flex mt-2 space-x-3 rtl:space-x-reverse">
-                <Image src="/images/payment/visa.png" alt="Visa" width={40} height={25} className="h-8 w-auto object-contain" />
-                <Image src="/images/payment/mastercard.png" alt="Mastercard" width={40} height={25} className="h-8 w-auto object-contain" />
-                <Image src="/images/payment/mada.png" alt="Mada" width={40} height={25} className="h-8 w-auto object-contain" />
-                <Image src="/images/payment/apple-pay.png" alt="Apple Pay" width={40} height={25} className="h-8 w-auto object-contain" />
+              <div className="flex items-center space-x-4 rtl:space-x-reverse text-2xl">
+                <FaCcVisa title="Visa" className="text-white hover:text-helden-gold transition-colors" />
+                <FaCcMastercard title="Mastercard" className="text-white hover:text-helden-gold transition-colors" />
+                <BsCreditCard2FrontFill title="Mada" className="text-white hover:text-helden-gold transition-colors" />
+                <FaCcApplePay title="Apple Pay" className="text-white hover:text-helden-gold transition-colors" />
               </div>
             </div>
+            {/* Delivery Partners */}
             <div>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-400 text-sm mb-3">
                 {t('footer.deliveryPartners')}
               </p>
-              <div className="flex mt-2 space-x-3 rtl:space-x-reverse">
-                <Image src="/images/shipping/aramex.png" alt="Aramex" width={40} height={25} className="h-8 w-auto object-contain" />
-                <Image src="/images/shipping/dhl.png" alt="DHL" width={40} height={25} className="h-8 w-auto object-contain" />
-                <Image src="/images/shipping/smsa.png" alt="SMSA" width={40} height={25} className="h-8 w-auto object-contain" />
+              <div className="flex items-center space-x-4 rtl:space-x-reverse text-2xl">
+                <FaTruck title="Aramex" className="text-white hover:text-helden-gold transition-colors" />
+                <FaDhl title="DHL" className="text-white hover:text-helden-gold transition-colors" />
+                <SiUps title="SMSA" className="text-white hover:text-helden-gold transition-colors" />
               </div>
             </div>
           </div>

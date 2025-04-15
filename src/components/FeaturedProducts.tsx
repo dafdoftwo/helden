@@ -198,7 +198,7 @@ export default function FeaturedProducts() {
                   </button>
                   <button 
                     className="bg-white hover:bg-helden-purple text-helden-purple hover:text-white p-2 rounded-full shadow-md transition-colors"
-                    aria-label={t('products.addToCart')}
+                    aria-label={t('common.addToCart')}
                     disabled={product.stockStatus === 'out-of-stock'}
                   >
                     <FiShoppingBag size={20} />
