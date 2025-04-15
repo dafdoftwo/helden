@@ -1,6 +1,6 @@
 # HELDEN Online Store
 
-A comprehensive online store specializing in women's clothing for customers in Saudi Arabia. Built with Next.js, Tailwind CSS, and Firebase.
+A comprehensive online store specializing in women's clothing for customers in Saudi Arabia. Built with Next.js, Tailwind CSS, and Supabase.
 
 ## Features
 
@@ -25,8 +25,8 @@ A comprehensive online store specializing in women's clothing for customers in S
 
 1. Clone the repository
 ```bash
-git clone https://github.com/dafdoftwo/onion.git
-cd onion
+git clone https://github.com/dafdoftwo/helden.git
+cd helden
 ```
 
 2. Install dependencies
@@ -41,13 +41,14 @@ npm run dev
 
 ## Deployment
 
-The site is configured for deployment to Firebase Hosting with Firebase Functions handling the server-side components.
+The site is configured for deployment to Vercel with serverless functions handling the API routes.
 
 To deploy:
 
 ```bash
 npm run build
-firebase deploy
+# Deploy to Vercel
+vercel --prod
 ```
 
 ## Tech Stack
@@ -56,8 +57,8 @@ firebase deploy
 - React 18
 - TypeScript
 - Tailwind CSS
-- Supabase (Database)
-- Firebase (Hosting and Functions)
+- Supabase (Database and Authentication)
+- Vercel (Hosting)
 - Stripe (Payments)
 
 ## Admin Dashboard
