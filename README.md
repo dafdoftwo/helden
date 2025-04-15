@@ -51,6 +51,18 @@ npm run build
 vercel --prod
 ```
 
+The website is accessible at: https://helden.vip
+
+## Custom Domain Setup
+
+To configure your custom domain (helden.vip) in Vercel:
+
+1. Go to your Vercel project dashboard
+2. Navigate to "Settings" > "Domains"
+3. Add your domain "helden.vip"
+4. Follow Vercel's instructions to configure your DNS settings
+5. After verification, your site will be available at https://helden.vip
+
 ## Tech Stack
 
 - Next.js 14 (App Router)

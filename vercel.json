@@ -50,5 +50,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "https://helden-store.vercel.app/:path*",
+      "destination": "https://helden.vip/:path*",
+      "permanent": true
+    }
   ]
 } 
